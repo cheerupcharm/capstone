@@ -10,50 +10,56 @@
     <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
 
   </head>
-  <body>
-       <main>
-    <div class="logo">
-        <img src="img/logo.png" alt="">
-    </div>
-    <div class="login-box">
-        <div id="container-login">
-            <h2>Have we met before?</h2>
-            <label for="email-login">Email Address</label>
-            <input id="email-login" type="email" placeholder="Email Address">
-            <label for="password-login">Password</label>
-            <input id="password-login" type="password" placeholder="Password">
-            <img id="submit-login" src="img/login.png" alt="">
-                <!-- <button id="submit-login">Log in</button> -->
+    <body>
+    <main>
+        <div class="logo">
+            <img src="img/logo-br.png" alt="">
+        </div>
+        <h2>Have we met before?</h2>
+        <div class="login-box">
+            <div id="container-login">
+                <label for="email-login">email</label>
+                <input id="email-login" type="email" placeholder="Email Address">
+                <label for="password-login">password</label>
+                <input id="password-login" type="password" placeholder="Password">
+                <div id="submit-login">
+                    LOG IN
+                </div>
+            </div>
+            <!-- <div id="container-logout">
+                <p id="status-user"></p>
+                <button id="submit-logout">Log out</button>
+            </div> -->
+            <div class="container-signup">
+                <!-- <h1>Sign up</h1> -->
+                <label for="name-register">name</label>
+                <input id="name-register" type="text" placeholder="Name">
+                <label for="email-register">email</label>
+                <input id="email-register" type="email" placeholder="Email">
+                <label for="password-register">password</label>
+                <input id="password-register" type="password" placeholder="password">
+                <div id="submit-register">
+                    SIGN UP
+                </div>
+                <!-- <img id="submit-register" src="img/register.png" alt=""> -->
+                <!-- <button id="submit-register">Register</button> -->
+            </div>
+        </div>
+        <div class="sign-wrap">
             <div class="sign-up">
-              <div id="link-signup">Sign up</div>
+                <div id="link-signup">I don't have an account!</div>
             </div>
-        </div>
-        <!-- <div id="container-logout">
-            <p id="status-user"></p>
-            <button id="submit-logout">Log out</button>
-        </div> -->
-        <div class="container-signup">
-            <h1>Sign up</h1>
-            <label for="name-register">Name</label>
-            <input id="name-register" type="text" placeholder="Name">
-            <label for="email-register">Email Address</label>
-            <input id="email-register" type="email" placeholder="Email">
-            <label for="password-register">Password</label>
-            <input id="password-register" type="password" placeholder="password">
-            <img id="submit-register" src="img/register.png" alt="">
-            <!-- <button id="submit-register">Register</button> -->
             <div class="sign-in">
-              <div id="link-signin">Sign In</div>
+                <div id="link-signin">Sign In</div>
             </div>
         </div>
-    </div>
-    <!-- <div>
+        <!-- <div>
                 <button id="mypage"><a href="/mypage.html">Go to my page</a></button>
             </div> -->
-</main>
+    </main>
     </body>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
     <script defer src="/__/firebase/4.6.0/firebase-auth.js"></script>
     <script defer src="/__/firebase/4.6.0/firebase-database.js"></script>
     <script src="/js/register.js"></script>
