@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister");
+@import url("https://fonts.googleapis.com/css?family=Short+Stack");
 .materialize-red {
   background-color: #e51c23 !important; }
 
@@ -4523,9 +4525,9 @@ input[type=number]:not(.browser-default),
 input[type=search]:not(.browser-default),
 textarea.materialize-textarea {
   background-color: white;
-  border: 5px solid #FDD649;
-  -webkit-border-radius: 5px;
-          border-radius: 5px;
+  border: none;
+  -webkit-border-radius: 13px;
+          border-radius: 13px;
   outline: none;
   height: 3rem;
   width: 100%;
@@ -4605,7 +4607,7 @@ textarea.materialize-textarea {
   input[type=number]:not(.browser-default):focus:not([readonly]) + label,
   input[type=search]:not(.browser-default):focus:not([readonly]) + label,
   textarea.materialize-textarea:focus:not([readonly]) + label {
-    color: #ff5722; }
+    color: #603913; }
   input:not([type]).validate + label,
   input[type=text]:not(.browser-default).validate + label,
   input[type=password]:not(.browser-default).validate + label,
@@ -7352,14 +7354,16 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   /*shape-rendering: crispEdges;*/ }
 
 body {
-  background-color: #fbb03b;
-  height: 100vh; }
+  background-color: #6F5547;
+  height: 100vh;
+  background-image: url("../img/main.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat; }
+  body.mypage {
+    background-image: url("../img/main-my.svg"); }
 
 main {
-  background-image: url("../img/bg-white.png");
-  background-position: center;
-  background-size: 90% 75%;
-  background-repeat: no-repeat;
   height: 100vh;
   overflow: hidden;
   padding: 1.5em;
@@ -7374,13 +7378,35 @@ main {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
-          justify-content: center; }
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+  main h2 {
+    text-align: center;
+    font-family: 'Short Stack', cursive;
+    font-size: 2rem;
+    background-color: #fff;
+    -webkit-border-radius: 20px;
+            border-radius: 20px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    padding: 1em 1.5em;
+    position: relative; }
+    main h2:before {
+      width: 0px;
+      height: 0px;
+      border-style: solid;
+      border-width: 10px 15px 10px 0;
+      border-color: transparent #dd4397 transparent transparent; }
 
 .main-wrapper {
   display: -webkit-box;
@@ -7394,23 +7420,54 @@ main {
           flex-direction: column;
   max-width: 600px; }
 
+.login-box, .greeting-box, #entry-box, #option-box {
+  width: 435px;
+  height: 385px;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 3em 3.5em;
+  background-color: rgba(241, 184, 155, 0.9);
+  -webkit-border-radius: 50px;
+          border-radius: 50px;
+  border: 10px solid #FCE2D3;
+  position: relative;
+  -webkit-flex-basis: 100%;
+      -ms-flex-preferred-size: 100%;
+          flex-basis: 100%; }
+  .login-box:before, .greeting-box:before, #entry-box:before, #option-box:before {
+    content: " ";
+    position: absolute;
+    z-index: 1;
+    top: -3px;
+    left: 0px;
+    right: 0px;
+    bottom: -3px;
+    border: 10px solid #FCB99C;
+    -webkit-border-radius: 50px;
+            border-radius: 50px; }
+
+#menu-item img:hover ~ #menu-item img {
+  opacity: 0.8;
+  -webkit-transition: all 175ms 150ms cubic-bezier(0.4, 0, 1, 1);
+  transition: all 175ms 150ms cubic-bezier(0.4, 0, 1, 1); }
+
 .greeting-box, #entry-box, #option-box {
-  background-image: url("../img/textbb-1.png");
-  background-position: center;
-  background-size: 100% 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  -webkit-flex-basis: 0;
+      -ms-flex-preferred-size: 0;
+          flex-basis: 0;
+  width: inherit;
+  height: 100%;
   padding: 1em 2em 3em; }
-  .greeting-box h2, #entry-box h2, .greeting-box h3, #entry-box h3, #option-box h2, #option-box h3 {
-    color: #fff; }
   .greeting-box h5, #entry-box h5, #option-box h5 {
     color: #cf0200; }
 
 #entry-box {
-  background-image: url("../img/textbbox-1.png");
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 1em 5em 3em 2em; }
+
+.view-box-wrapper {
+  z-index: 99; }
 
 textarea#entry_text {
   background-color: white;
@@ -7426,34 +7483,45 @@ textarea#entry_text {
 img#entry_pic {
   max-width: 150px; }
 
-.login-box {
-  width: 500px;
-  height: 470px;
-  overflow: hidden;
-  margin: 0 auto;
-  padding: 3em 5.5em;
-  background-image: url("../img/login-bg.png");
-  background-size: 100% 105%;
-  background-repeat: no-repeat;
-  position: relative; }
+#submit-login, #submit-register, #submit-register {
+  cursor: pointer; }
 
 #submit-login, #submit-register {
-  cursor: pointer;
-  max-width: 100px; }
+  float: right;
+  font-family: 'Love Ya Like A Sister', cursive;
+  background-color: #EE8533;
+  padding: 10px 20px;
+  font-size: 2rem;
+  -webkit-border-radius: 20px;
+          border-radius: 20px;
+  border: 5px solid #F1D3C0; }
 
 #container-login {
   position: relative;
-  top: 0; }
+  top: 30px;
+  z-index: 99;
+  -webkit-transition: all 175ms 150ms cubic-bezier(0.4, 0, 1, 1);
+  transition: all 175ms 150ms cubic-bezier(0.4, 0, 1, 1); }
   #container-login h2 {
     font-size: 2.5rem;
     color: #cf0200; }
+  #container-login label {
+    font-family: 'Love Ya Like A Sister', cursive;
+    font-size: 2rem;
+    margin-left: 10px; }
+  #container-login.anim-up {
+    top: -350px;
+    -webkit-transition: all 175ms 150ms cubic-bezier(0, 0, 0.2, 1);
+    transition: all 175ms 150ms cubic-bezier(0, 0, 0.2, 1); }
 
 label {
-  color: #cf0200; }
+  color: #603913; }
+
+.sign-wrap {
+  display: block;
+  text-align: center; }
 
 .sign-up, .sign-in {
-  display: inline-block;
-  float: right;
   margin-top: 1em;
   margin-right: 1.5em;
   -webkit-transition: all 175ms 150ms cubic-bezier(0.4, 0, 1, 1);
@@ -7467,26 +7535,30 @@ label {
 
 .container-signup {
   position: relative;
-  margin-top: 2em;
-  top: 50px;
-  background-color: #fbb03b;
+  margin-top: 4em;
+  top: 150px;
   -webkit-transition: all 175ms 150ms cubic-bezier(0.4, 0, 1, 1);
-  transition: all 175ms 150ms cubic-bezier(0.4, 0, 1, 1); }
+  transition: all 175ms 150ms cubic-bezier(0.4, 0, 1, 1);
+  z-index: 999; }
   .container-signup.anim-up {
-    top: -370px;
+    top: -300px;
     -webkit-transition: all 175ms 150ms cubic-bezier(0, 0, 0.2, 1);
     transition: all 175ms 150ms cubic-bezier(0, 0, 0.2, 1); }
   .container-signup h1 {
     font-size: 2rem;
     margin-bottom: 0; }
+  .container-signup label {
+    font-family: 'Love Ya Like A Sister', cursive;
+    font-size: 2rem;
+    margin-left: 10px; }
 
 .logo {
   text-align: center;
-  -webkit-flex-basis: 100%;
-      -ms-flex-preferred-size: 100%;
-          flex-basis: 100%; }
+  -webkit-flex-basis: 50%;
+      -ms-flex-preferred-size: 50%;
+          flex-basis: 50%; }
   .logo img {
-    width: 400px; }
+    width: 300px; }
 
 .logopage {
   position: absolute;
@@ -7501,7 +7573,7 @@ label {
   top: 0;
   right: -33%;
   width: 33%;
-  background-color: #fbb03b;
+  background-color: #5A3C1F;
   -webkit-transition: -webkit-box-shadow .25s;
   transition: -webkit-box-shadow .25s;
   transition: box-shadow .25s;
@@ -7573,6 +7645,12 @@ div#displaylogdis {
 
 #text-success h2 {
   color: #cf0200; }
+
+#entrylogdis_text {
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 10px; }
+  #entrylogdis_text h1 {
+    margin-top: 0; }
 
 #entrylogdis_pic {
   max-width: 200px; }
@@ -7652,3 +7730,16 @@ div#displaylogdis {
 
 .ql-toolbar.ql-snow {
   background-color: beige; }
+
+#chat.hidden {
+  -webkit-transition: all 175ms 150ms cubic-bezier(0, 0, 0.2, 1);
+  transition: all 175ms 150ms cubic-bezier(0, 0, 0.2, 1);
+  position: relative;
+  top: 50px;
+  opacity: 0;
+  height: 0;
+  overflow-y: hidden; }
+
+.botui-container {
+  -webkit-border-radius: 20px;
+          border-radius: 20px; }

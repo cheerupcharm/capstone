@@ -25,9 +25,9 @@ textarea.materialize-textarea {
 
   // General Styles
   background-color: white;
-  border: 5px solid #FDD649;
+  border: none;
   // border-bottom: $input-border;
-  border-radius: 5px;
+  border-radius: 13px;
   outline: none;
   height: $input-height;
   width: 100%;
@@ -59,7 +59,7 @@ textarea.materialize-textarea {
 
   // Focused label style
   &:focus:not([readonly])+label {
-    color: $input-focus-color;
+    color: #603913;
   }
 
   // Valid Input Style
