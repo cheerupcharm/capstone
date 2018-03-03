@@ -12,13 +12,11 @@ function getDOMElements() {
 
 pizza.linkSignUp.addEventListener("click", function() {
   console.log("Is Clicked");
-  $("#container-login").addClass("anim-up");
-  $(".container-signup").addClass("anim-up");
+  $(".container-signup").toggleClass("anim-up");
 });
 
 pizza.linkSignIn.addEventListener("click", function() {
   console.log("Is Clicked");
-  $("#container-login").removeClass("anim-up");
-  $(".container-signup").removeClass("anim-up");
+  $(".container-signup").toggleClass("anim-up");
 });
 

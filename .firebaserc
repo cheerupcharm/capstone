@@ -1,9 +1,0 @@
-{
-  "projects": {
-    "simulator": "charmupapp",
-    "default": "charmupapp",
-    "CheerTest": "cheercharmapp2",
-    "SecondDeploy": "charmupapp",
-    "Capstone": "charmupapp"
-  }
-}
