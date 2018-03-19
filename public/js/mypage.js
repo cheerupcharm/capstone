@@ -13,7 +13,6 @@
     let EntMonEng = ["Jan", "Feb", "Mar", "Apr", "May", "Jul", "Jun", "Aug", "Sep", "Oct", "Nov", "Dec"];
     let EntDay = Entymdhms.getDate();
     let uploaddate = EntMonEng[EntMon] + " " + EntDay + ", " + EntYear;
-    let timestamp = Math.floor(Entymdhms.getTime() / 100) ;
     let text;
     let usernamedis;
     let picname;
@@ -23,7 +22,7 @@
     let emotionbool = "false";
     let emotionUrl = ["img/happy.png", "img/normal.png", "img/sad.png"];
     let emotionAlt = ["Happy", "Normal", "Sad"];
-
+   
     //display greeting 
     if(usercheck == 0) {
         let rfirst = Math.floor( Math.random() * firstgreeting.length );
@@ -67,13 +66,65 @@ console.log("nouser");
 
     //when a user click a "Reset"
     elems.entryresetButton.addEventListener("click", resetEntry, false);
-
-    //when a user click a "Random post"
-    elems.randomButton.addEventListener("click", randomPost, false);
-
-
        
     
+//     function loadPastlog(){
+//         //get a user who is logging in
+//         let currentUser = firebase.auth().currentUser;
+// // 
+//         //get a userid
+//         let userId = currentUser.uid;  
+//         let dbRefinput = firebase.database().ref("userinput");
+//         let querydisp = dbRefinput.orderByChild("userid").equalTo(userId);
+// // console.log("querydisp: " + querydisp);
+//           querydisp.on("value", function(snapshot) {
+// // console.log(snapshot.numChildren());
+//               let i = 0;
+//               snapshot.forEach(function(d){
+                  
+//                   let nodediv = document.createElement("div");
+//                   let crefun = document.createAttribute("onclick"); 
+//                   crefun.value = "previewLog(this.id)";
+//                   let creid = document.createAttribute("id"); 
+//                   creid.value = "logid" + i;
+//                   nodediv.setAttributeNode(crefun);
+//                   nodediv.setAttributeNode(creid);
+
+//                   let nodeh4 = document.createElement("h4");
+//                   let textnodeh4= document.createTextNode(d.child("createdate").val());
+//                   nodeh4.appendChild(textnodeh4);
+                  
+//                   let nodep = document.createElement("p");
+//                   let textnodep = document.createTextNode(d.child("text").val());
+//                   nodep.appendChild(textnodep);
+                  
+//                   let nodeimg = document.createElement("img");
+//                   let cresrc = document.createAttribute("src"); 
+//                   let crealt = document.createAttribute("alt"); 
+//                   cresrc.value = d.child("imageplace").val();
+//                   crealt.value = d.child("imagename").val();
+//                   nodeimg.setAttributeNode(cresrc);
+//                   nodeimg.setAttributeNode(crealt);
+
+//                   let nodeeimg = document.createElement("img");
+//                   let creesrc = document.createAttribute("src"); 
+//                   let creealt = document.createAttribute("alt"); 
+//                   creesrc.value = emotionUrl[d.child("emotionid").val()];
+//                   creealt.value = emotionAlt[d.child("emotionid").val()];
+//                   nodeeimg.setAttributeNode(creesrc);
+//                   nodeeimg.setAttributeNode(creealt);
+
+//                   nodediv.appendChild(nodeh4);
+//                   nodediv.appendChild(nodep);
+//                   nodediv.appendChild(nodeimg);
+//                   nodediv.appendChild(nodeeimg);
+
+//                   elems.displaylogdis.appendChild(nodediv);
+//                   i = i + 1;
+//               });
+//           }); 
+//     }
+
     function loadPastlog(){
         //get a user who is logging in
         let currentUser = firebase.auth().currentUser;
@@ -86,7 +137,7 @@ console.log("nouser");
           querydisp.on("value", function(snapshot) {
               let i = 0;
               snapshot.forEach(function(d){
-                  
+
                   let nodediv = document.createElement("div");
                   let crefun = document.createAttribute("onclick"); 
                   crefun.value = "previewLog(this.id)";
@@ -98,18 +149,23 @@ console.log("nouser");
                   let nodeh4 = document.createElement("h4");
                   let textnodeh4= document.createTextNode(d.child("createdate").val());
                   nodeh4.appendChild(textnodeh4);
-                  
-                  let nodep = document.createElement("p");
+
+                  let nodep = document.createElement("section");
                   let textnodep = document.createTextNode(d.child("text").val());
-                  nodep.appendChild(textnodep);
+                  let databaseText = d.child("text").val();
+                  console.log("This is database text: " + d.child("text").val());
                   
                   let nodeimg = document.createElement("img");
+                  console.log(d.child("imageplace").val());
+                  console.log(d.child("imagename").val());
                   let cresrc = document.createAttribute("src"); 
                   let crealt = document.createAttribute("alt"); 
                   cresrc.value = d.child("imageplace").val();
                   crealt.value = d.child("imagename").val();
                   nodeimg.setAttributeNode(cresrc);
                   nodeimg.setAttributeNode(crealt);
+
+                  nodep.innerHTML = databaseText;
 
                   let nodeeimg = document.createElement("img");
                   let creesrc = document.createAttribute("src"); 
@@ -118,7 +174,7 @@ console.log("nouser");
                   creealt.value = emotionAlt[d.child("emotionid").val()];
                   nodeeimg.setAttributeNode(creesrc);
                   nodeeimg.setAttributeNode(creealt);
-
+        
                   nodediv.appendChild(nodeh4);
                   nodediv.appendChild(nodep);
                   nodediv.appendChild(nodeimg);
@@ -126,27 +182,24 @@ console.log("nouser");
 
                   elems.displaylogdis.appendChild(nodediv);
                   i = i + 1;
+
               });
           }); 
     }
-
-    function randomPost(){
-// alert('Work');
-      let logcount = 0;
-      logcount = elems.displaylogdis.childElementCount;
-console.log(logcount);
-      if(logcount == 0) {
-        alert("Please create your log!");
-      } else if (logcount == 1) {
-console.log("logid0");
-      } else {
-        //create random
-        let randomnum = Math.floor(Math.random() * logcount);
-console.log(randomnum);
-      }
-    }
+  
 
     function previewLog(clicked_id){
+
+        /* Additional for CSS Animation*/
+        while(elems.dislogBig.firstChild) {
+            elems.dislogBig.removeChild(elems.dislogBig.firstChild);
+        }
+
+        // elems.dislogBig.style.opacity = "1";
+        $("#displaylogbig").addClass("hidden");
+        $("#displaylogbig").removeClass("hidden");
+        /* End of Additional for CSS Animation*/
+
         let previewId = clicked_id;
         let bigdivkids = document.getElementById(clicked_id).children;  
         let bigimg = document.getElementById(previewId).getElementsByTagName('img');
@@ -158,9 +211,12 @@ console.log(randomnum);
         let textnodeh3big= document.createTextNode(h3big);
         nodeh3big.appendChild(textnodeh3big);
 
-        let nodepbig = document.createElement("p");
-        let textnodepbig= document.createTextNode(pbig);
-        nodepbig.appendChild(textnodepbig);
+        let nodepbig = document.createElement("section");
+        let textnodepbig = document.createTextNode(pbig);
+        // nodepbig.appendChild(textnodepbig);
+        nodepbig.innerHTML = bigdivkids[1].innerHTML;
+
+        
 
         //picture
         let nodeimgbig = document.createElement("img");
@@ -206,10 +262,13 @@ console.log(randomnum);
 
     function backOriginal(){
         elems.entrylogField.style.display = "inline";
+        // elems.dislogBig.style.opacity = "0";
+        $("#displaylogbig").addClass("hidden");
         $(".entry-title").removeClass("hidden");
         $(".view-title").addClass("hidden");
         $("#intro-wrapper").removeClass("hidden");
         $("#entry-box").addClass("hidden");
+        // elems.displaylogdis.style.display = "inline";
 
         while(elems.dislogBig.firstChild) {
             elems.dislogBig.removeChild(elems.dislogBig.firstChild);
@@ -217,72 +276,112 @@ console.log(randomnum);
     }
 
     function nextEntry(){
-        text  = elems.entrytext.value;
+        text  = elems.qlentrytext.innerHTML;
 
-console.log(emotionbool);
-        if ((!text == "") && (emotionbool == "true")) {
-        
-        elems.entrydate.innerHTML = EntMonEng[EntMon] + " " + EntDay;
-        elems.entrytextDis.innerHTML = text;
-        elems.entrylogDisFeild.style.display = "inline";
+        console.log(text);
+        // text  = elems.entrytext.value;
 
-        entrypicAttr = elems.entrypic.hasAttribute("src");
-        elems.entryMood.src = emotionUrl[emotionnum];
-        elems.entryMood.alt = emotionAlt[emotionnum];
+        console.log(emotionbool);
 
-        //check whether there is src attribute in img id"entry_pic"
-        if (entrypicAttr) {
-              let pathReference = storage.ref(picregistername);
-              // Create a reference to the file we want to download
-              let picRef = storageRef.child(picregistername);
+        // if ((!text == "") && (emotionbool == "true")) {
+       if (!text == ""){
+            elems.entrydate.innerHTML = EntMonEng[EntMon] + " " + EntDay;
+            elems.entrytextDis.innerHTML = text;
+            elems.entrylogDisFeild.style.display = "inline";
 
-              // Get the download URL
-              picRef.getDownloadURL().then(function(url) {
-                elems.entrypicDis.src = url;
-                elems.entrypicDis.alt = picname;
-              });
+            entrypicAttr = elems.entrypic.hasAttribute("src");
+            elems.entryMood.src = emotionUrl[emotionnum];
+            elems.entryMood.alt = emotionAlt[emotionnum];
+
+            //check whether there is src attribute in img id"entry_pic"
+    //         if (entrypicAttr) {
+    //               let pathReference = storage.ref(picname);
+    // console.log("pathReference: " + pathReference);
+    //               // Create a reference to the file we want to download
+    //               let picRef = storageRef.child(picname);
+
+    //               // Get the download URL
+    //               picRef.getDownloadURL().then(function(url) {
+    // console.log(url);
+    //                 elems.entrypicDis.src = url;
+    //                 elems.entrypicDis.alt = picname;
+    //               });
+    //         }
+            if (entrypicAttr) {
+                  let pathReference = storage.ref(picregistername);
+                  // Create a reference to the file we want to download
+                  let picRef = storageRef.child(picregistername);
+
+                  // Get the download URL
+                  picRef.getDownloadURL().then(function(url) {
+                    elems.entrypicDis.src = url;
+                    elems.entrypicDis.alt = picname;
+                  });
+            }
+            elems.entrylogField.style.display = "none";
+            $(".entry-title").toggleClass("hidden");
+        } else {
+            window.alert("Please input your entry! And select the emotional icon!");
         }
-        elems.entrylogField.style.display = "none";
-        $(".entry-title").addClass("hidden");
-      } else {
-          window.alert("Please input your entry! And select the emotional icon!");
-      }
     }
 
 
-    function resetEntry(){
-      entrypicAttr = elems.entrypic.src;
-      if(entrypicAttr){
-          // Create a reference to the file to delete
-          let delpicRef = storageRef.child(picregistername);
-          // Delete the file
-          delpicRef.delete().then(function() {
-            // File deleted successfully
-console.log("Complete delete a pic");
-          }).catch(function(error) {
-console.log("A pic Delete Error...");
-          });
-      }
+//     function resetEntry(){
+// console.log("Reset works!");
+//       elems.qlentrytext.innerHTML = null;
+//       elems.entrypic.removeAttribute("src");
+//       picname = "";
 
-      elems.entrytext.value = null;
-      text  = elems.entrytext.value;
-      elems.entrytextDis.innerHTML = text;
-      elems.entrypic.removeAttribute("src");
-      elems.entrypic.removeAttribute("alt");
-      picregistername = "";
-      picname = "";
-      entrypicAttr = "";
+// console.log("one");
+// console.log("entrypicAttr: " + entrypicAttr);
+//       if(entrypicAttr){
+//           // Create a reference to the file to delete
+//           let delpicRef = storageRef.child(picname);
+// console.log("two");
+//           // Delete the file
+//           delpicRef.delete().then(function() {
+//             // File deleted successfully
+// console.log("Complete delete a pic");
+//           }).catch(function(error) {
+// console.log("A pic Delete Error...");
+//           });
+//       }
+//     }
 
-      elems.hapid.style.background  = "transparent"; 
-      elems.norid.style.background = "transparent";
-      elems.sadid.style.background = "transparent";
-      emotionbool = "false";
-    }
+        function resetEntry() {
+            elems.qlentrytext.value = null;
+            text = elems.qlentrytext.value;
+            elems.entrytextDis.innerHTML = text;
+            elems.entrypic.removeAttribute("src");
+            elems.entrypic.removeAttribute("alt");
+            picname = "";
+
+            elems.hapid.style.background = "transparent";
+            elems.norid.style.background = "transparent";
+            elems.sadid.style.background = "transparent";
+            emotionbool = "false";
+
+            if (entrypicAttr) {
+                // Create a reference to the file to delete
+                let delpicRef = storageRef.child(picname);
+                // Delete the file
+                delpicRef.delete().then(function() {
+                    // File deleted successfully
+                    console.log("Complete delete a pic");
+                }).catch(function(error) {
+                    console.log("A pic Delete Error...");
+                });
+            }
+        }
 
 
 
     function submitEntry(){
+// let domlength = elems.displaylogdis.childElementCount;
+
+
         while(elems.displaylogdis.firstChild) {
+// console.log("elems.displaylogdis.firstChild: " + elems.displaylogdis.firstChild);
             elems.displaylogdis.removeChild(elems.displaylogdis.firstChild);
         }
          //get a user who is logging in
@@ -295,14 +394,14 @@ console.log("A pic Delete Error...");
         let logdata = firebase.database().ref('userinput/')
         let imgUrl = elems.entrypicDis.getAttribute("src");
 
-         var latetra = 0;
-          var setInter = setInterval(function() {
-              latetra++;
-              //end condition
-              if (latetra == 4) {
-              clearInterval(setInter);
-              }
-          }, 500);
+        var latetra = 0;
+        var setInter = setInterval(function() {
+            latetra++;
+            //end condition
+            if (latetra == 4) {
+            clearInterval(setInter);
+            }
+        }, 500);
 
         if(!entrypicAttr){
             picname = "";
@@ -312,7 +411,7 @@ console.log("A pic Delete Error...");
 
         logdata.push({
           userid: userId,
-          text: elems.entrytext.value,
+          text: elems.qlentrytext.innerHTML,
           emotionid: emotionnum,
           imagename: picname,
           imageregistername: picregistername, 
@@ -321,7 +420,7 @@ console.log("A pic Delete Error...");
         });
 
       elems.entrydate.innerHTML = null;
-      elems.entrytext.innerHTML = null;
+      elems.qlentrytext.innerHTML = null;
       elems.entrypic.removeAttribute("src");
       elems.entrypic.removeAttribute("alt");
 
@@ -341,11 +440,10 @@ console.log("A pic Delete Error...");
 
        //undisplay div id "entrylogdis"
       elems.entrylogDisFeild.style.display = "none";
-      elems.entrylogField.style.display = "inline";
-
-
       $("#intro-wrapper").toggleClass("hidden");
       // fadeIn(element);
+
+      /* submitSuccess() in in anim-mypage.js*/
       submitSuccess(success);
       
         $("#entry-box").toggleClass("hidden");
@@ -355,50 +453,73 @@ console.log("A pic Delete Error...");
               }
 
       $(".entry-title").addClass("hidden");
+      goHome()
+      // elems.entrylogField.style.display = "inline";
     }
-    
+
     function backEntry(){
         text = "";
         elems.entrytextDis.innerHTML = text;
         elems.entrylogDisFeild.style.display = "none";
         elems.entrylogField.style.display = "inline";
         //remove src attribute from id "entrylogdis_pic"
-        elems.entrypicDis.removeAttribute("src");  
+        elems.entrypicDis.removeAttribute("src");
         elems.entrypicDis.removeAttribute("alt"); 
 
         elems.hapid.style.background  = "transparent"; 
         elems.norid.style.background = "transparent";
         elems.sadid.style.background = "transparent";
+        $(".entry-title").toggleClass("hidden"); 
     }
 
     //function to save file
       function loadFile(){
-          let currentUser = firebase.auth().currentUser;
-          //get a userid
-          let userId = currentUser.uid 
           let file = document.getElementById("files").files[0];
-          picregistername = timestamp + userId + file.name;
+console.log(file);
+          
           let storageRef = firebase.storage().ref();
           
           //dynamically set reference to the file name
-          let thisRef = storageRef.child(picregistername);
+          let thisRef = storageRef.child(file.name);
+console.log("file.name: " + file.name);
           //put request upload file to firebase storage
           thisRef.put(file).then(function(snapshot) {
 console.log('Uploaded a blob or file!');
           });
 
-          let pathReference = storage.ref(picregistername);
+          let pathReference = storage.ref(file.name);
+console.log("pathReference: " + pathReference);
           picname = file.name;
+
+          // previewFile(picname);
+
           var latetra = 0;
           var setInter = setInterval(function() {
+console.log(latetra);
               latetra++;
               //end condition
-              if (latetra == 5) {
+              if (latetra == 4) {
               clearInterval(setInter);
-              previewFile(picregistername);
+              previewFile(picname);
+console.log("END");
               }
           }, 500);
       }
+
+//       function previewFile(picname){
+//           // Create a reference to the file we want to download
+//           let picRef = storageRef.child(picname);
+
+//           // Get the download URL
+//           picRef.getDownloadURL().then(function(url) {
+// console.log(url);
+//           elems.entrypic.src = url;
+//             // Insert url into an <img> tag to "download"
+//           }).catch(function(error) {
+// console.log("error");
+//           });
+
+//       }
 
       function previewFile(picregistername){
           // Create a reference to the file we want to download
@@ -406,15 +527,15 @@ console.log('Uploaded a blob or file!');
 
           // Get the download URL
           picRef.getDownloadURL().then(function(url) {
-            elems.entrypic.src = url;
-            elems.entrypic.alt = picname;
-
+          elems.entrypic.src = url;
+          elems.entrypic.alt = picname;
             // Insert url into an <img> tag to "download"
           }).catch(function(error) {
-console.log("error");
+            console.log("error");
           });
 
       }
+
 
       function happyEmotion(){
           elems.hapid.style.background = "#ffb6c1";
@@ -442,6 +563,7 @@ console.log("error");
             emotionnum = 2;
             emotionbool = "true";
       }
+
             
     //log out 
     elems.logoutButton.addEventListener("click", function() {
@@ -453,6 +575,7 @@ console.log("error");
     });
 
 
+
     //get elements 
     function getDOMElements() {
         return {
@@ -461,44 +584,55 @@ console.log("error");
           "entrylogField": document.getElementById("entrylog"),
           "entryformField": document.getElementById("entry_form"),
           "entrydate":document.getElementById("entry_date"),
+          "qlentrytext":document.querySelector(".ql-editor"),
+          "entrytitle":document.querySelector(".entry-title"),
           "entrytext":document.getElementById("entry_text"),
           "entrypic":document.getElementById("entry_pic"),
-          
+
           "hapid":document.getElementById("happy"),
           "norid":document.getElementById("normal"),
           "sadid":document.getElementById("sad"),
+
 
           "entrynextButton":document.getElementById("entry_nextb"),
           "entryresetButton":document.getElementById("entry_resetb"),
           "entrylogDisFeild":document.getElementById("entrylogdis"),
           "entrytextDis":document.getElementById("entrylogdis_text"),
           "entrypicDis":document.getElementById("entrylogdis_pic"),
+
           "entryMood":document.getElementById("entrymood"),
 
           "entrybackButton":document.getElementById("entrylogdis_backb"),
           "entrysubmitButton":document.getElementById("entrylogdis-submitb"),
-          "displaylogdis":document.getElementById("displaylogdis"),
-          "dislogBig":document.getElementById("displaylogbig"),
-
-          "randomButton":document.getElementById("random-alt"),
+          "dislogDate":document.getElementById("logdis_date"),
+          "dislogText":document.getElementById("logdis_text"),
+          "dispdeleteButton":document.getElementById("logdis_deb"),
 
           "logoutContainer": document.getElementById("container-logout"),
           "userStatus": document.getElementById("status-user"),
-          "logoutButton": document.getElementById("submit-logout")
+          "logoutButton": document.getElementById("submit-logout"),
+
+          "entrybackButton":document.getElementById("entrylogdis_backb"),
+          "entrysubmitButton":document.getElementById("entrylogdis-submitb"),
+          "displaylogdis":document.getElementById("displaylogdis"),
+          "dislogBig":document.getElementById("displaylogbig")
         };
     }
 
     // Initialize Firebase
     function initializeApp(){
         var config = {
-          apiKey: "AIzaSyBJmELOXjhvSkQehdIdccq8qWoUsiE2xUo",
-          authDomain: "cherupcharmdemo.firebaseapp.com",
-          databaseURL: "https://cherupcharmdemo.firebaseio.com",
-          projectId: "cherupcharmdemo",
-          storageBucket: "cherupcharmdemo.appspot.com",
-          messagingSenderId: "798253301377"
+            apiKey: "AIzaSyB54gHFoCICkOQZ-lcdc1m1jVi-EW3NNOc",
+          authDomain: "charmupapp.firebaseapp.com",
+          databaseURL: "https://charmupapp.firebaseio.com",
+          projectId: "charmupapp",
+          storageBucket: "charmupapp.appspot.com",
+          messagingSenderId: "263698113549"
           };
         firebase.initializeApp(config);
     }
+
+    let cece = document.getElementById("qtext");
+    console.log(cece.innerHTML);
 
 

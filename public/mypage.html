@@ -8,12 +8,20 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="/css/materialize.css"  media="screen,projection"/>
+    <!-- Include stylesheet -->
+    <link href="https://cdn.quilljs.com/1.3.5/quill.snow.css" rel="stylesheet">
+    <!-- BOT UI CSS -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/botui/build/botui.min.css" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/botui/build/botui-theme-default.css" />
   </head>
-  <body>
+  <body class="mypage">
   <main>
+  <div class="botui-app-container hidden" id="chat">
+            <bot-ui></bot-ui>
+        </div>
       <div class="main-wrapper">
           <div class="logopage">
-              <img src="img/logo.png" alt="">
+              <img src="img/logo-br.png" alt="">
           </div>
           <!-- <h1>My page</h1> -->
 
@@ -29,9 +37,18 @@
                 <h3>What do you want to do?</h3>
               </div>
               <div id="menu-item" class="row">
-                <div id="post-alt" class="col s4 waves-effect waves-light btn-large">POST SOMETHING</div>
-                <div id="view-alt" class="col s4 waves-effect waves-light btn-large">VIEW POST LOG</div>
-                <div id="random-alt" class="col s4 waves-effect waves-light btn-large">RANDOM POST</div>
+                <div id="post-alt" class="col s3 waves-effect waves-light">
+                  <img src="img/write.png" alt="">
+                </div>
+                <div id="view-alt" class="col s3 waves-effect waves-light">
+                  <img src="img/read.png" alt="">
+                </div>
+                <div id="chat-alt" class="col s3 waves-effect waves-light">
+                  <img src="img/chat.png" alt="">
+                </div>
+                <div class="col s3 waves-effect waves-light">
+                  <img src="img/play.png" alt="">
+                </div>
               </div>
               <div id="text-success">
                 <h2>Post is stored</h2>
@@ -44,7 +61,8 @@
                     
                     <div id="entrylog">
                         <form name="entryform" id="entry_form">
-                            <textarea placeholder="Write it here!" name='text' cols="30" rows="5" id="entry_text"></textarea>
+                            <!-- <textarea placeholder="Write it here!" name='text' cols="30" rows="5" id="entry_text"></textarea> -->
+                            <div id="qtext"></div>
                             <br/>
                             <input type="file" onchange="loadFile()" id="files" name="files[]">
                             <img id="entry_pic">
@@ -71,7 +89,7 @@
                 </div>
             </div>
             <h2 class="view-title hidden">This is your old writings...</h2>
-            <div id="displaylogbig">
+            <div id="displaylogbig" class="hidden">
             </div>
           </div>
           <!-- view-box-container end -->
@@ -83,9 +101,9 @@
               </div>
           </div>
           <div class="main-button">
-              <img id="view-button" src="img/view.png" alt="">
-              <img id="upload-button" src="img/upload.png" alt="">
-              <img id="home-button" src="img/home.png" alt="">
+              <img id="view-button" src="img/view-b.png" alt="">
+              <img id="upload-button" src="img/upload-b.png" alt="">
+              <img id="home-button" src="img/home-b.png" alt="">
           </div>
           <div class="dog-placement">
             <img src="/img/doggi-move-60.gif" alt="">
@@ -93,16 +111,28 @@
       </div>
       <!-- end of .main-wrapper -->
   </main>
+
+
+
         <div class="displaylog-container">
           <div id="displaylogdis">
           </div>
         </div>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
-    <script defer src="/__/firebase/4.9.1/firebase-auth.js"></script>
-    <script defer src="/__/firebase/4.9.1/firebase-database.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bubbly-bg@0.2.3/dist/bubbly-bg.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
+    <script defer src="/__/firebase/4.6.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/4.6.0/firebase-database.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bubbly-bg@0.2.3/dist/bubbly-bg.js"></script> -->
+    <!-- Include the Quill library -->
+    <script src="https://cdn.quilljs.com/1.3.5/quill.js"></script>
+    <!-- Initialize Quill editor -->
     <script>
+      var quill = new Quill('#qtext', {
+        theme: 'snow'
+      });
+    </script>
+    <!-- <script src="/js/starry.js"></script> -->
+    <!-- <script>
       bubbly({
           colorStart: "#fbb03b",
           colorStop: "#fbb03b",
@@ -110,8 +140,14 @@
           compose: "source-over",
           bubbleFunc: () => `hsla(${Math.random() * 50}, 100%, 50%, .3)`
       });           
-    </script>
+    </script> -->
     <script src="/js/transition.js"></script>    
     <script src="/js/mypage.js"></script>
     <script src="/js/anim-mypage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/botui/build/botui.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=init"></script>
+
+    
 </html>
