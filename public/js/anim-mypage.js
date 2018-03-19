@@ -9,6 +9,7 @@ function getDOMElements() {
       "uploadButton": document.getElementById("upload-button"),
       "homeButton": document.getElementById("home-button"),
       "postalt": document.getElementById("post-alt"),
+      "chatalt": document.getElementById("chat-alt"),
       "viewalt": document.getElementById("view-alt")
     };
 }
@@ -26,9 +27,13 @@ donut.postalt.addEventListener("click", uploadstuff, false);
 
 function uploadstuff(){
   console.log("uploadButton Is Clicked");
+  $(".botui-app-container").addClass("hidden");
   $("#entry-box").removeClass("hidden");
   $("#intro-wrapper").addClass("hidden");
   $(".view-title").addClass("hidden");
+  $(".displaylog-container").removeClass("slide-in");
+  $("#displaylogbig").addClass("hidden");
+  // elems.dislogBig.style.opacity = "0";
   while(elems.dislogBig.firstChild) {
             elems.dislogBig.removeChild(elems.dislogBig.firstChild);
         };
@@ -40,13 +45,34 @@ function uploadstuff(){
 donut.homeButton.addEventListener("click", goHome, false);
 
 function goHome(){
+  $(".botui-app-container").addClass("hidden");
   $("#entry-box").addClass("hidden");
   $("#intro-wrapper").removeClass("hidden");
   $(".view-title").addClass("hidden");
+  $(".displaylog-container").removeClass("slide-in");
+  $("#displaylogbig").addClass("hidden");
+  // elems.dislogBig.style.opacity = "0";
   while(elems.dislogBig.firstChild) {
       elems.dislogBig.removeChild(elems.dislogBig.firstChild);
   }
 };
+
+donut.chatalt.addEventListener("click", chatstuff, false);
+
+function chatstuff(){
+  console.log("chatButton Is Clicked");
+  $(".botui-app-container").removeClass("hidden");
+  $("#entry-box").addClass("hidden");
+  $("#intro-wrapper").addClass("hidden");
+  $(".view-title").addClass("hidden");
+  $(".displaylog-container").removeClass("slide-in");
+  playBot();
+  while(elems.dislogBig.firstChild) {
+            elems.dislogBig.removeChild(elems.dislogBig.firstChild);
+        };
+  elems.entrylogField.style.display = "inline";
+  // elems.displaylogdis.style.display = "inline";
+      };
 
 function fadeIn(element) {
     transition.begin(element, ["opacity 0 1 0.5s ease-in-out 1s", "top 40px 0px 0.5s ease-in-out 1s"], {
