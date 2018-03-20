@@ -284,8 +284,7 @@ console.log("nouser");
 
         console.log(emotionbool);
 
-        // if ((!text == "") && (emotionbool == "true")) {
-       if (!text == ""){
+        if ((!text == "") && (emotionbool == "true")) {
             elems.entrydate.innerHTML = EntMonEng[EntMon] + " " + EntDay;
             elems.entrytextDis.innerHTML = text;
             elems.entrylogDisFeild.style.display = "inline";
@@ -350,8 +349,8 @@ console.log("nouser");
 //     }
 
         function resetEntry() {
-            elems.qlentrytext.value = null;
-            text = elems.qlentrytext.value;
+            elems.qlentrytext.innerHTML = null;;
+            text = elems.qlentrytext.innerHTML;
             elems.entrytextDis.innerHTML = text;
             elems.entrypic.removeAttribute("src");
             elems.entrypic.removeAttribute("alt");
