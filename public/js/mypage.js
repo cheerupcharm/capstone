@@ -13,6 +13,7 @@
     let EntMonEng = ["Jan", "Feb", "Mar", "Apr", "May", "Jul", "Jun", "Aug", "Sep", "Oct", "Nov", "Dec"];
     let EntDay = Entymdhms.getDate();
     let uploaddate = EntMonEng[EntMon] + " " + EntDay + ", " + EntYear;
+    let timestamp = Math.floor(Entymdhms.getTime() / 100) ;
     let text;
     let usernamedis;
     let picname;
@@ -473,38 +474,66 @@ console.log("nouser");
     }
 
     //function to save file
-      function loadFile(){
-          let file = document.getElementById("files").files[0];
-console.log(file);
+//       function loadFile(){
+//           let file = document.getElementById("files").files[0];
+// console.log(file);
           
-          let storageRef = firebase.storage().ref();
+//           let storageRef = firebase.storage().ref();
           
-          //dynamically set reference to the file name
-          let thisRef = storageRef.child(file.name);
-console.log("file.name: " + file.name);
-          //put request upload file to firebase storage
-          thisRef.put(file).then(function(snapshot) {
-console.log('Uploaded a blob or file!');
-          });
+//           //dynamically set reference to the file name
+//           let thisRef = storageRef.child(file.name);
+// console.log("file.name: " + file.name);
+//           //put request upload file to firebase storage
+//           thisRef.put(file).then(function(snapshot) {
+// console.log('Uploaded a blob or file!');
+//           });
 
-          let pathReference = storage.ref(file.name);
-console.log("pathReference: " + pathReference);
-          picname = file.name;
+//           let pathReference = storage.ref(file.name);
+// console.log("pathReference: " + pathReference);
+//           picname = file.name;
 
-          // previewFile(picname);
+//           // previewFile(picname);
 
-          var latetra = 0;
-          var setInter = setInterval(function() {
-console.log(latetra);
-              latetra++;
-              //end condition
-              if (latetra == 4) {
-              clearInterval(setInter);
-              previewFile(picname);
-console.log("END");
-              }
-          }, 500);
-      }
+//           var latetra = 0;
+//           var setInter = setInterval(function() {
+// console.log(latetra);
+//               latetra++;
+//               //end condition
+//               if (latetra == 4) {
+//               clearInterval(setInter);
+//               previewFile(picname);
+// console.log("END");
+//               }
+//           }, 500);
+//       }
+
+          function loadFile(){
+              let currentUser = firebase.auth().currentUser;
+              //get a userid
+              let userId = currentUser.uid 
+              let file = document.getElementById("files").files[0];
+              picregistername = timestamp + userId + file.name;
+              let storageRef = firebase.storage().ref();
+              
+              //dynamically set reference to the file name
+              let thisRef = storageRef.child(picregistername);
+              //put request upload file to firebase storage
+              thisRef.put(file).then(function(snapshot) {
+          console.log('Uploaded a blob or file!');
+              });
+
+              let pathReference = storage.ref(picregistername);
+              picname = file.name;
+              var latetra = 0;
+              var setInter = setInterval(function() {
+                  latetra++;
+                  //end condition
+                  if (latetra == 4) {
+                  clearInterval(setInter);
+                  previewFile(picregistername);
+                  }
+              }, 500);
+          }
 
 //       function previewFile(picname){
 //           // Create a reference to the file we want to download
