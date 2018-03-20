@@ -4,3 +4,4 @@ firebase.json
 storage.rules
 **/node_modules
 node_modules/
+.myYouTubeAPIKEY
