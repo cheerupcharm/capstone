@@ -1,6 +1,9 @@
+.env
 .firebaserc
 database.rules.json
 firebase.json
 storage.rules
 **/node_modules
 node_modules/
+.myYouTubeAPIKEY
+package-lock.json

@@ -179,7 +179,7 @@ console.log("mymusic:" + mymusic);
 
 
 function init() {
-    gapi.client.setApiKey("AIzaSyB5L9qKa5keSunElhzmGbT_d3E6Z5TzyqY");
+    gapi.client.setApiKey("<SET YOUR YOUTUBE API HERE>");
     gapi.client.load("youtube", "v3", function() {
     });
 } 
