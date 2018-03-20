@@ -5,3 +5,4 @@ storage.rules
 **/node_modules
 node_modules/
 .myYouTubeAPIKEY
+package-lock.json
