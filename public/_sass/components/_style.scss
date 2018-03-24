@@ -55,7 +55,7 @@ main{
 
 .login-box{
 	width: 435px;
-	min-height: 385px;
+	min-height: 445px;
 	overflow: hidden;
 	margin: 0 auto;
 	// background-color: #fff;
@@ -182,6 +182,7 @@ label{
 .sign-wrap{
 	display: block;
 	text-align: center;
+	margin-bottom: 2em;
 }
 
 .sign-up, .sign-in{
@@ -247,8 +248,8 @@ label{
 	width: 33%;
 	background-color: #5A3C1F;
 	transition: box-shadow .25s;
-	border-radius: 2px;
-	z-index: 2;
+	border-radius: 2px;	
+	z-index: 99;
 	@extend .z-depth-5;
 	// opacity: 0.5;
 	transition: mdc-animation-exit-permanent(all,175ms,150ms);
@@ -303,7 +304,7 @@ div#displaylogdis{
 	position:absolute;
 	right: 80px;
 	top: 100px;
-	z-index: 99;
+	z-index: 999;
 	img{
 		padding-left: 1em;
 		width: 80px;
@@ -358,11 +359,28 @@ div#displaylogdis{
 #displaylogbig{
 	@extend .entry-title;
 	@extend .login-box;
+	min-height:auto;
 	img{
 		max-width: 300px;
 	}
 	button{
 		position: relative;
+	}
+	section{
+		h2{
+			background-color: transparent;
+			text-align: left;
+			padding: 0;
+		}
+		p{
+			font-family: 'Short Stack', cursive;
+		}
+	}
+	img{
+		display:block;
+	}
+	button{
+		display:block;
 	}
 }
 
@@ -401,6 +419,8 @@ div#displaylogdis{
 	opacity: 1;
 	height: auto;
 	overflow-y: visible;
+	max-height: 90vh;
+	align-items:baseline;
 	&.hidden{
 		transition: mdc-animation-enter(all,175ms,150ms);
 		position: relative;
@@ -453,4 +473,24 @@ div#displaylogdis{
 
 .botui-container{
 	border-radius: 20px;
+}
+
+// For Media Query Mobile (600px down)
+@media #{$small-and-down}{
+
+	.login-box{
+		width:auto;
+		padding: 3em 2.5em;
+	}
+
+	main h2{
+		padding: 0.8em 1em;
+		font-size: 1.4rem;
+		width: 100%;
+	}
+
+	.container-signup{
+		margin-top: 6em;
+	}
+
 }

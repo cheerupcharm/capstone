@@ -341,3 +341,29 @@ $collection-line-height: 1.5rem !default;
 // ==========================================================================
 
 $progress-bar-color: $secondary-color !default;
+
+/*** Global ***/
+// Media Query Ranges
+$small-screen-up: 601px !default;
+$medium-screen-up: 993px !default;
+$large-screen-up: 1201px !default;
+$small-screen: 600px !default;
+$medium-screen: 992px !default;
+$large-screen: 1200px !default;
+
+$screen-xxs: 359px !default;
+$screen-xs: 480px !default;
+$screen-sm: 768px !default;
+$screen-md: 992px !default;
+$screen-lg: 1200px !default;
+
+$medium-and-up: "only screen and (min-width : #{$medium-screen})" !default;
+$large-and-up: "only screen and (min-width : #{$large-screen-up})" !default;
+$large-and-down: "only screen and (max-width : #{$large-screen})" !default;
+$small-and-down: "only screen and (max-width : #{$small-screen})" !default;
+$medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
+$medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
+$large-only: "only screen and (min-width : #{$medium-screen-up}) and (max-width : #{$large-screen})" !default;
+
+$sm-medium: "only screen and (min-width : #{$screen-sm}) and (max-width : #{$medium-screen})" !default;
+$small-sm: "only screen and (min-width : #{$small-screen}) and (max-width : #{$screen-sm})" !default;
