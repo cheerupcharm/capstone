@@ -179,7 +179,7 @@ console.log("mymusic:" + mymusic);
 
 
 function init() {
-    gapi.client.setApiKey("<SET YOUR YOUTUBE API HERE>");
+    gapi.client.setApiKey("AIzaSyB54gHFoCICkOQZ-lcdc1m1jVi-EW3NNOc");
     gapi.client.load("youtube", "v3", function() {
     });
 } 
@@ -212,5 +212,5 @@ function triviapools() {
     return  tribialarray[rannum];
 }
 
-firstbot();
+// firstbot();
 
