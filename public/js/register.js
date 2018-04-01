@@ -14,6 +14,7 @@
       let name_ = elems.regnameField.value;
       let email_ = elems.regemailField.value;
       let password_ = elems.regpasswordField.value;
+      let playtimes_ = 0;
         
       firebase.auth().createUserWithEmailAndPassword(email_, password_).then(function(user_) {
         console.log("Success: ", user_);
@@ -29,7 +30,8 @@
           name: name_,
           email: email_,
           password: password_,
-          createdate: today
+          createdate: today,
+          playtimes: playtimes_,
         });
 
     console.log("DB succeed!");

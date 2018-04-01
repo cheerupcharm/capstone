@@ -390,6 +390,17 @@ console.log("nouser");
         //get a userid
         let userId = currentUser.uid   
         console.log(userId);
+// increase the number of the user's playtime
+let dbRefUserInfo = firebase.database().ref("users/" + userId + "/playtimes");
+dbRefUserInfo.transaction(function(currentPlaytimes){
+  return currentPlaytimes + 1;
+});
+    
+// get a user's playtime
+console.log("currentUser:" + userId);
+let playPrevious  = dbRefUserInfo.on("value", function(snapshot) {
+                    console.log(snapshot.val());
+                  });
 
         let logdata = firebase.database().ref('userinput/')
         let imgUrl = elems.entrypicDis.getAttribute("src");
