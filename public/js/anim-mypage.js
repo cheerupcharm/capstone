@@ -66,7 +66,7 @@ function chatstuff(){
   $("#intro-wrapper").addClass("hidden");
   $(".view-title").addClass("hidden");
   $(".displaylog-container").removeClass("slide-in");
-  playBot();
+  firstbot();
   while(elems.dislogBig.firstChild) {
             elems.dislogBig.removeChild(elems.dislogBig.firstChild);
         };

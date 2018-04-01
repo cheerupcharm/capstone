@@ -254,9 +254,9 @@ console.log("nouser");
 
         elems.dislogBig.appendChild(nodeh3big);
         elems.dislogBig.appendChild(nodepbig);
-        elems.dislogBig.appendChild(nodebutton);
         elems.dislogBig.appendChild(nodeimgbig);
         elems.dislogBig.appendChild(nodeeimgbig);
+        elems.dislogBig.appendChild(nodebutton);
 
         elems.entrylogField.style.display = "none";
     }
