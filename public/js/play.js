@@ -1,5 +1,6 @@
+	let domelems = getDOMElements();
+
 	function playShow(){
-		console.log("Playworks");
 		firebase.auth().onAuthStateChanged(function(user_) {
 	    if (user_) {
 	          playCheck();       
@@ -20,6 +21,11 @@
 	    dbRefUserInfo.on("value", function(snapshot) {
         let userDetails = snapshot.val();
         let dogpicnum = userDetails.dogpicture;
+        let pointnum = userDetails.playtimes;
+
+        //show post points
+	    domelems.postnum.innerHTML = pointnum;
+
 console.log("playdogpicnum: " + dogpicnum);
 		showPlayPic(dogpicnum);
 	    });
@@ -29,3 +35,11 @@ console.log("playdogpicnum: " + dogpicnum);
 			let dogpictureid = dogpicnum;
 console.log("playdogPic:" + dogpictureid);
 	}
+
+	//get elements 
+    function getDOMElements() {
+        return {
+          "postpoint": document.getElementById("points"),
+          "postnum": document.getElementById("pointsnum")
+        }
+    }
