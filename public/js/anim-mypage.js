@@ -47,6 +47,7 @@ donut.homeButton.addEventListener("click", goHome, false);
 
 function goHome(){
   $(".botui-app-container").addClass("hidden");
+  $("#play-menu").addClass("hidden");
   $("#entry-box").addClass("hidden");
   $("#intro-wrapper").removeClass("hidden");
   $(".view-title").addClass("hidden");
@@ -79,12 +80,12 @@ donut.playalt.addEventListener("click", playstuff, false);
 
 function playstuff(){
     console.log("PlayButton Is Clicked");
-    $(".play-container").removeClass("hidden");
+    $("#play-menu").removeClass("hidden");
     $("#entry-box").addClass("hidden");
     $("#intro-wrapper").addClass("hidden");
     $(".view-title").addClass("hidden");
     $(".displaylog-container").removeClass("slide-in");
-    // firstbot();
+    playShow();
     while(elems.dislogBig.firstChild) {
               elems.dislogBig.removeChild(elems.dislogBig.firstChild);
           };
