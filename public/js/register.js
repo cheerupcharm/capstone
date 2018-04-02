@@ -15,6 +15,7 @@
       let email_ = elems.regemailField.value;
       let password_ = elems.regpasswordField.value;
       let playtimes_ = 0;
+      let dogpicture_ = 0;
         
       firebase.auth().createUserWithEmailAndPassword(email_, password_).then(function(user_) {
         console.log("Success: ", user_);
@@ -32,6 +33,7 @@
           password: password_,
           createdate: today,
           playtimes: playtimes_,
+          dogpicture: dogpicture_
         });
 
     console.log("DB succeed!");
