@@ -8,7 +8,7 @@
 
 	function dogPictureCheck(){
 		//get a user who is logging in
-	        let currentUser = firebase.auth().currentUser;
+	    let currentUser = firebase.auth().currentUser;
 
 	    //get a userid
 	    let userId = currentUser.uid 
@@ -23,7 +23,7 @@
 
 	function showdogPic(dogpicnum) {
 		let dogpictureid = dogpicnum;
-console.log("showdogPic:" + dogpictureid);
+// console.log("showdogPic:" + dogpictureid);
 
 		switch (dogpictureid) {
 			case 0:
