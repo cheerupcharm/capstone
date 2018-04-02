@@ -389,7 +389,8 @@ console.log("nouser");
 
         //get a userid
         let userId = currentUser.uid   
-        console.log(userId);
+console.log(userId);
+
 // increase the number of the user's playtime
 let dbRefUserInfo = firebase.database().ref("users/" + userId + "/playtimes");
 dbRefUserInfo.transaction(function(currentPlaytimes){
