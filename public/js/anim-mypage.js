@@ -10,6 +10,7 @@ function getDOMElements() {
       "homeButton": document.getElementById("home-button"),
       "postalt": document.getElementById("post-alt"),
       "chatalt": document.getElementById("chat-alt"),
+      "playalt": document.getElementById("play-alt"),
       "viewalt": document.getElementById("view-alt")
     };
 }
@@ -46,6 +47,7 @@ donut.homeButton.addEventListener("click", goHome, false);
 
 function goHome(){
   $(".botui-app-container").addClass("hidden");
+  $("#play-menu").addClass("hidden");
   $("#entry-box").addClass("hidden");
   $("#intro-wrapper").removeClass("hidden");
   $(".view-title").addClass("hidden");
@@ -73,6 +75,23 @@ function chatstuff(){
   elems.entrylogField.style.display = "inline";
   // elems.displaylogdis.style.display = "inline";
       };
+
+donut.playalt.addEventListener("click", playstuff, false);
+
+function playstuff(){
+    console.log("PlayButton Is Clicked");
+    $("#play-menu").removeClass("hidden");
+    $("#entry-box").addClass("hidden");
+    $("#intro-wrapper").addClass("hidden");
+    $(".view-title").addClass("hidden");
+    $(".displaylog-container").removeClass("slide-in");
+    playShow();
+    while(elems.dislogBig.firstChild) {
+              elems.dislogBig.removeChild(elems.dislogBig.firstChild);
+          };
+    elems.entrylogField.style.display = "inline";
+  // elems.displaylogdis.style.display = "inline";
+}
 
 function fadeIn(element) {
     transition.begin(element, ["opacity 0 1 0.5s ease-in-out 1s", "top 40px 0px 0.5s ease-in-out 1s"], {

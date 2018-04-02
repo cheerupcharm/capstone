@@ -8,7 +8,7 @@
 
 	function dogPictureCheck(){
 		//get a user who is logging in
-	        let currentUser = firebase.auth().currentUser;
+	    let currentUser = firebase.auth().currentUser;
 
 	    //get a userid
 	    let userId = currentUser.uid 
