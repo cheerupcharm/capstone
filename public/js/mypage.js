@@ -389,7 +389,19 @@ console.log("nouser");
 
         //get a userid
         let userId = currentUser.uid   
-        console.log(userId);
+console.log(userId);
+
+// increase the number of the user's playtime
+let dbRefUserInfo = firebase.database().ref("users/" + userId + "/playtimes");
+dbRefUserInfo.transaction(function(currentPlaytimes){
+  return currentPlaytimes + 1;
+});
+    
+// get a user's playtime
+console.log("currentUser:" + userId);
+let playPrevious  = dbRefUserInfo.on("value", function(snapshot) {
+                    console.log(snapshot.val());
+                  });
 
         let logdata = firebase.database().ref('userinput/')
         let imgUrl = elems.entrypicDis.getAttribute("src");
@@ -650,12 +662,12 @@ console.log("nouser");
     // Initialize Firebase
     function initializeApp(){
         var config = {
-            apiKey: "AIzaSyB54gHFoCICkOQZ-lcdc1m1jVi-EW3NNOc",
-          authDomain: "charmupapp.firebaseapp.com",
-          databaseURL: "https://charmupapp.firebaseio.com",
-          projectId: "charmupapp",
-          storageBucket: "charmupapp.appspot.com",
-          messagingSenderId: "263698113549"
+          apiKey: "AIzaSyAatGjG5U82vOAc2Gdj1n1HRYuATwoL8Ng",
+          authDomain: "cheerupcharmcordova.firebaseapp.com",
+          databaseURL: "https://cheerupcharmcordova.firebaseio.com",
+          projectId: "cheerupcharmcordova",
+          storageBucket: "cheerupcharmcordova.appspot.com",
+          messagingSenderId: "648210211385"
           };
         firebase.initializeApp(config);
     }
