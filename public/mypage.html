@@ -49,7 +49,7 @@
                         <div id="chat-alt" class="col m3 s6 waves-effect waves-light">
                             <img src="img/chat.png" alt="">
                         </div>
-                        <div class="col m3 s6 waves-effect waves-light">
+                        <div id="play-alt" class="col m3 s6 waves-effect waves-light">
                             <img src="img/play.png" alt="">
                         </div>
                     </div>
@@ -113,7 +113,7 @@
         </div>
         <!-- end of .main-wrapper -->
     </main>
-    <div id="play-menu">
+    <div id="play-menu" class="hidden">
         <div class="play-wrapper">
           <div class="play-container">
               <h1>Play</h1>
@@ -124,7 +124,7 @@
                   <li class="col s6"><a href=""><img src="img/shop-no.png" alt=""></a><p>Scarf</p></li>
                   <li class="col s6"><a href=""><img src="img/shop-no.png" alt=""></a><p>Flower Crown</p></li>
               </ul>
-              <div id="points">Post point: <span>5</span></div>
+              <div id="points">Post point: <span id="pointsnum">5</span></div>
           </div>
         </div>
     </div>
@@ -145,16 +145,6 @@
         theme: 'snow'
     });
     </script>
-    <!-- <script src="/js/starry.js"></script> -->
-    <!-- <script>
-      bubbly({
-          colorStart: "#fbb03b",
-          colorStop: "#fbb03b",
-          blur: 1,
-          compose: "source-over",
-          bubbleFunc: () => `hsla(${Math.random() * 50}, 100%, 50%, .3)`
-      });           
-    </script> -->
     <script src="/js/transition.js"></script>
     <script src="/js/mypage.js"></script>
     <script src="/js/dog-placement.js"></script>
@@ -162,6 +152,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/botui/build/botui.js"></script>
     <script src="/js/index.js"></script>
+    <script src="/js/play.js"></script>
     <script src="https://apis.google.com/js/client.js?onload=init"></script>
 
 </html>
