@@ -27,13 +27,13 @@ console.log("showdogPic:" + dogpictureid);
 
 		switch (dogpictureid) {
 			case 0:
-				document.getElementById("dogplacement").src = "/img/doggi-move-60.gif";
+				document.getElementById("dogplacement").src = "/img/dog-01.png";
 				break;
 			case 1:
-				document.getElementById("dogplacement").src = "/img/dog-scarf.png";
+				document.getElementById("dogplacement").src = "/img/dog-hat.png";
 				break;
 			case 2:
-				document.getElementById("dogplacement").src = "/img/dog-hat.png";
+				document.getElementById("dogplacement").src = "/img/dog-scarf.png";
 				break;
 			case 3:
 				document.getElementById("dogplacement").src = "/img/dog-flower-crown-purple.png";
