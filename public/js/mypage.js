@@ -247,7 +247,7 @@ console.log("nouser");
 
 
         $(".displaylog-container").toggleClass("slide-in");
-        $("#entry-box").addClass("hidden");
+        $("#entrybox-wrapper").addClass("hidden");
         $("#intro-wrapper").addClass("hidden");
         $(".view-title").removeClass("hidden");
 
@@ -268,7 +268,7 @@ console.log("nouser");
         $(".entry-title").removeClass("hidden");
         $(".view-title").addClass("hidden");
         $("#intro-wrapper").removeClass("hidden");
-        $("#entry-box").addClass("hidden");
+        $("#entrybox-wrapper").addClass("hidden");
         // elems.displaylogdis.style.display = "inline";
 
         while(elems.dislogBig.firstChild) {
@@ -458,7 +458,7 @@ let playPrevious  = dbRefUserInfo.on("value", function(snapshot) {
       /* submitSuccess() in in anim-mypage.js*/
       submitSuccess(success);
       
-        $("#entry-box").toggleClass("hidden");
+        $("#entrybox-wrapper").toggleClass("hidden");
         $(".view-title").addClass("hidden");
         while(elems.dislogBig.firstChild) {
                   elems.dislogBig.removeChild(elems.dislogBig.firstChild);
@@ -662,12 +662,12 @@ let playPrevious  = dbRefUserInfo.on("value", function(snapshot) {
     // Initialize Firebase
     function initializeApp(){
         var config = {
-          apiKey: "AIzaSyAatGjG5U82vOAc2Gdj1n1HRYuATwoL8Ng",
-          authDomain: "cheerupcharmcordova.firebaseapp.com",
-          databaseURL: "https://cheerupcharmcordova.firebaseio.com",
-          projectId: "cheerupcharmcordova",
-          storageBucket: "cheerupcharmcordova.appspot.com",
-          messagingSenderId: "648210211385"
+          apiKey: "AIzaSyB54gHFoCICkOQZ-lcdc1m1jVi-EW3NNOc",
+          authDomain: "charmupapp.firebaseapp.com",
+          databaseURL: "https://charmupapp.firebaseio.com",
+          projectId: "charmupapp",
+          storageBucket: "charmupapp.appspot.com",
+          messagingSenderId: "263698113549"
           };
         firebase.initializeApp(config);
     }

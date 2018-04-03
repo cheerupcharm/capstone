@@ -1,3 +1,22 @@
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: #FFF;
+    -webkit-box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);
+}
+::-webkit-scrollbar-thumb {
+    background: #CCC;
+    -webkit-box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #AAA;
+}
+::-webkit-scrollbar-thumb:active {
+    background: #888;
+    -webkit-box-shadow: inset 1px 1px 2px rgba(0,0,0,0.3);
+}
+
 body{
 	background-color: #6F5547;
 	height: 100vh;
@@ -108,6 +127,22 @@ main{
 	// background-image: url("../img/textbbox-1.png");
 	box-sizing: border-box;
 	padding: 1em 5em 3em 2em;
+}
+
+#entrybox-wrapper{
+	transition: mdc-animation-exit-permanent(all,175ms,150ms);
+	position: relative;
+	top: 0;
+	opacity: 1;
+	height: auto;
+	&.hidden{
+		transition: mdc-animation-enter(all,175ms,150ms);
+		position: relative;
+		top:50px;
+		opacity: 0;
+		height: 0;
+		overflow-y: hidden;
+	}
 }
 
 .view-box-wrapper{
@@ -542,6 +577,16 @@ div#displaylogdis{
             }
         }
     }
+}
+
+#close-button-all{
+	position: absolute;
+	top:0;
+	right:0;
+	z-index: 9;
+	img{
+		width: 50px;
+	}
 }
 
 
