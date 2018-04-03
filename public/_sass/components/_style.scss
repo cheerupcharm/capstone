@@ -540,7 +540,7 @@ div#displaylogdis{
             &:before {
                 content: " ";
                 position: absolute;
-                z-index: 0;
+                z-index: -9;
                 top: -3px;
                 left: 0px;
                 right: 0px;
@@ -587,6 +587,18 @@ div#displaylogdis{
 	img{
 		width: 50px;
 	}
+	&:hover{
+		cursor: pointer;
+		img{
+			filter: drop-shadow(2px 2px 2px #222);
+		}
+	}
+}
+
+#close-button-play{
+	@extend #close-button-all;
+    top: -25px;
+    right: -15px;
 }
 
 

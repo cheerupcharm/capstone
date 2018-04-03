@@ -199,6 +199,7 @@ console.log("nouser");
         // elems.dislogBig.style.opacity = "1";
         $("#displaylogbig").addClass("hidden");
         $("#displaylogbig").removeClass("hidden");
+        $("#play-menu").addClass("hidden");
         /* End of Additional for CSS Animation*/
 
         let previewId = clicked_id;
@@ -265,10 +266,10 @@ console.log("nouser");
         elems.entrylogField.style.display = "inline";
         // elems.dislogBig.style.opacity = "0";
         $("#displaylogbig").addClass("hidden");
-        $(".entry-title").removeClass("hidden");
         $(".view-title").addClass("hidden");
-        $("#intro-wrapper").removeClass("hidden");
         $("#entrybox-wrapper").addClass("hidden");
+        $(".entry-title").removeClass("hidden");
+        $("#intro-wrapper").removeClass("hidden");
         // elems.displaylogdis.style.display = "inline";
 
         while(elems.dislogBig.firstChild) {
