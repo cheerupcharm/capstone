@@ -12,10 +12,12 @@ function getDOMElements() {
       "chatalt": document.getElementById("chat-alt"),
       "playalt": document.getElementById("play-alt"),
       "viewalt": document.getElementById("view-alt"),
-      "closebutton": document.getElementById("close-button-all")
+      "closebutton": document.getElementById("close-button-all"),
+      "closebuttonplay": document.getElementById("close-button-play")
     };
 }
 
+// assign an Event Listener to the View/List down button
 donut.viewButton.addEventListener("click", sliderightbar, false);
 donut.viewalt.addEventListener("click", sliderightbar, false);
 
@@ -35,6 +37,7 @@ function uploadstuff(){
   $(".view-title").addClass("hidden");
   $(".displaylog-container").removeClass("slide-in");
   $("#displaylogbig").addClass("hidden");
+  $("#play-menu").addClass("hidden");
   // elems.dislogBig.style.opacity = "0";
   while(elems.dislogBig.firstChild) {
             elems.dislogBig.removeChild(elems.dislogBig.firstChild);
@@ -46,6 +49,7 @@ function uploadstuff(){
 
 donut.homeButton.addEventListener("click", goHome, false);
 donut.closebutton.addEventListener("click", goHome, false);
+donut.closebuttonplay.addEventListener("click", goHome, false);
 
 
 function goHome(){
