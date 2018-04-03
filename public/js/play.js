@@ -1,9 +1,9 @@
 	let domelems = getDOMElements();
 
-	domelems.normaldoggy.addEventListener("click", playClick, false);
-	domelems.hatdoggy.addEventListener("click", playClick, false);
-	domelems.scarfdoggy.addEventListener("click", playClick, false);
-	domelems.fcrowndoggy.addEventListener("click", playClick, false);
+	domelems.normaldoggy.addEventListener("click", normaldogClick, false);
+	domelems.hatdoggy.addEventListener("click", hatdogClick, false);
+	domelems.scarfdoggy.addEventListener("click", scarfdogClick, false);
+	domelems.fcrowndoggy.addEventListener("click", fcrowndogClick, false);
 
 	function playShow(){
 		firebase.auth().onAuthStateChanged(function(user_) {
@@ -53,8 +53,24 @@ console.log("point:" + point);
 			}
 	}
 
-	function playClick() {
-console.log("test");
+// 	function playClick() {
+// console.log("testplayclick");
+// 	}
+
+	function normaldogClick() {
+		//get a userid
+	    let userId = currentUser.uid 
+	    let dbRefUserInfo = firebase.database().ref("users/" + userId);
+
+	    dbRefUserInfo.on("value", function(snapshot) {
+        let dogpicnum = userDetails.dogpicture;
+
+        if() {
+        	
+        }
+
+	    });
+
 	}
 
 	//get elements 
