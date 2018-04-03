@@ -1,5 +1,10 @@
 	let domelems = getDOMElements();
 
+	domelems.normaldoggy.addEventListener("click", playClick, false);
+	domelems.hatdoggy.addEventListener("click", playClick, false);
+	domelems.scarfdoggy.addEventListener("click", playClick, false);
+	domelems.fcrowndoggy.addEventListener("click", playClick, false);
+
 	function playShow(){
 		firebase.auth().onAuthStateChanged(function(user_) {
 	    if (user_) {
@@ -46,6 +51,10 @@ console.log("point:" + point);
 				domelems.scarfdoggy.src = "img/shop-3.png";
 				domelems.fcrowndoggy.src = "img/shop-4.png";
 			}
+	}
+
+	function playClick() {
+console.log("test");
 	}
 
 	//get elements 
