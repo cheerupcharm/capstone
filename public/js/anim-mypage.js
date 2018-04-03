@@ -11,7 +11,8 @@ function getDOMElements() {
       "postalt": document.getElementById("post-alt"),
       "chatalt": document.getElementById("chat-alt"),
       "playalt": document.getElementById("play-alt"),
-      "viewalt": document.getElementById("view-alt")
+      "viewalt": document.getElementById("view-alt"),
+      "closebutton": document.getElementById("close-button-all")
     };
 }
 
@@ -29,7 +30,7 @@ donut.postalt.addEventListener("click", uploadstuff, false);
 function uploadstuff(){
   console.log("uploadButton Is Clicked");
   $(".botui-app-container").addClass("hidden");
-  $("#entry-box").removeClass("hidden");
+  $("#entrybox-wrapper").removeClass("hidden");
   $("#intro-wrapper").addClass("hidden");
   $(".view-title").addClass("hidden");
   $(".displaylog-container").removeClass("slide-in");
@@ -44,11 +45,13 @@ function uploadstuff(){
 
 
 donut.homeButton.addEventListener("click", goHome, false);
+donut.closebutton.addEventListener("click", goHome, false);
+
 
 function goHome(){
   $(".botui-app-container").addClass("hidden");
   $("#play-menu").addClass("hidden");
-  $("#entry-box").addClass("hidden");
+  $("#entrybox-wrapper").addClass("hidden");
   $("#intro-wrapper").removeClass("hidden");
   $(".view-title").addClass("hidden");
   $(".displaylog-container").removeClass("slide-in");
@@ -64,7 +67,7 @@ donut.chatalt.addEventListener("click", chatstuff, false);
 function chatstuff(){
   console.log("chatButton Is Clicked");
   $(".botui-app-container").removeClass("hidden");
-  $("#entry-box").addClass("hidden");
+  $("#entrybox-wrapper").addClass("hidden");
   $("#intro-wrapper").addClass("hidden");
   $(".view-title").addClass("hidden");
   $(".displaylog-container").removeClass("slide-in");
@@ -81,7 +84,7 @@ donut.playalt.addEventListener("click", playstuff, false);
 function playstuff(){
     console.log("PlayButton Is Clicked");
     $("#play-menu").removeClass("hidden");
-    $("#entry-box").addClass("hidden");
+    $("#entrybox-wrapper").addClass("hidden");
     $("#intro-wrapper").addClass("hidden");
     $(".view-title").addClass("hidden");
     $(".displaylog-container").removeClass("slide-in");
