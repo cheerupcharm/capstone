@@ -38,9 +38,8 @@
 	function showPlayPic(dogpicnum, pointnum) {
 			let dogpictureid = dogpicnum;
 			let point = pointnum;
-console.log("dogpictureid:" + dogpictureid);
-console.log("point:" + point);
-			
+// console.log("dogpictureid:" + dogpictureid);
+// console.log("point:" + point);
 			if(( 10 <= point) && (point < 20)) {
 				domelems.hatdoggy.src = "img/shop-2.png";
 			} else if ((20 <= point) && (point < 30)) {
@@ -53,25 +52,179 @@ console.log("point:" + point);
 			}
 	}
 
-// 	function playClick() {
-// console.log("testplayclick");
-// 	}
+	function normaldogClick(evt) {
+		evt.stopImmediatePropagation();
+	        	evt.preventDefault();
+		//get a user who is logging in
+	    let currentUser = firebase.auth().currentUser;
 
-	function normaldogClick() {
 		//get a userid
 	    let userId = currentUser.uid 
 	    let dbRefUserInfo = firebase.database().ref("users/" + userId);
-
 	    dbRefUserInfo.on("value", function(snapshot) {
-        let dogpicnum = userDetails.dogpicture;
-
-        if() {
-        	
-        }
-
+	    	let userDetails = snapshot.val();
+	        let dogpicnum = userDetails.dogpicture;
+	        if(dogpicnum != 0){
+	        	$( function() {
+	        		$( "#dialog-confirm" ).html("Do you wanna set?");
+				    $( "#dialog-confirm" ).dialog({
+				      resizable: false,
+				      title: "Set Normal Doggy!",
+				      height: "auto",
+				      width: 400,
+				      modal: true,
+				      buttons: {
+				        "Yes": function(event) {
+								dbRefUserInfo.update({
+			          				dogpicture: 0
+			        			});
+			        			domelems.dogplacementimage.src = "/img/dog-01.png";			
+				          $( this ).dialog( "destroy" );
+				          $( event.target ).remove();
+				          // $( "#dialog-confirm" ).empty();
+				          
+				        },
+				        "No": function(event) {
+				          $( this ).dialog( "destroy" );
+				          $( event.target ).remove();
+				          // $( "#dialog-confirm" ).empty();
+				        }
+				      }
+				    });
+			    });
+	        } 
 	    });
-
 	}
+
+	function hatdogClick(evt) {
+		evt.stopImmediatePropagation();
+	     evt.preventDefault();
+		//get a user who is logging in
+	    let currentUser = firebase.auth().currentUser;
+
+		//get a userid
+	    let userId = currentUser.uid 
+	    let dbRefUserInfo = firebase.database().ref("users/" + userId);
+	    dbRefUserInfo.on("value", function(snapshot) {
+	    	let userDetails = snapshot.val();
+	        let dogpicnum = userDetails.dogpicture;
+	        let pointnum = userDetails.playtimes;
+	        if((dogpicnum != 1) && (pointnum >= 10)){
+	        	$( function() {
+	        		$( "#dialog-confirm" ).html("Do you wanna set?");
+				    $( "#dialog-confirm" ).dialog({
+				      resizable: false,
+				      title: "Set Hat Doggy!",
+				      height: "auto",
+				      width: 400,
+				      modal: true,
+				      buttons: {
+				        "Yes": function(event) {
+								dbRefUserInfo.update({
+			          				dogpicture: 1
+			        			});
+			        			domelems.dogplacementimage.src = "/img/dog-hat.png";		
+				          $( this ).dialog( "destroy" );
+				          $( event.target ).remove();
+				          $( "#dialog-confirm" ).empty();
+				        },
+				        "No": function(event) {
+				          $( this ).dialog( "destroy" );
+				          $( event.target ).remove();
+				          $( "#dialog-confirm" ).empty();
+				        }
+				      }
+				    });
+			  });
+			} 
+	    });
+	}
+
+
+	function scarfdogClick() {
+		//get a user who is logging in
+	    let currentUser = firebase.auth().currentUser;
+
+		//get a userid
+	    let userId = currentUser.uid 
+	    let dbRefUserInfo = firebase.database().ref("users/" + userId);
+	    dbRefUserInfo.on("value", function(snapshot) {
+	    	let userDetails = snapshot.val();
+	        let dogpicnum = userDetails.dogpicture;
+	        let pointnum = userDetails.playtimes;
+	        if((dogpicnum != 2) && (pointnum >= 20)){
+	        	$( function() {
+	        		$( "#dialog-confirm" ).html("Do you wanna set?");
+				    $("#dialog-confirm").dialog({
+				      resizable: false,
+				      title: "Set Scarf Doggy!",
+				      height: "auto",
+				      width: 400,
+				      modal: true,
+				      buttons: {
+				        "Yes": function(event) {
+								dbRefUserInfo.update({
+			          				dogpicture: 2
+			        			});
+			        			domelems.dogplacementimage.src = "/img/dog-scarf.png";		
+				          $( this ).dialog("destroy");
+				          $( event.target ).remove();
+				          $( "#dialog-confirm" ).empty();
+				        },
+				        "No": function(event) {
+				          $( this ).dialog("destroy");
+				          $( event.target ).remove();
+				          $( "#dialog-confirm" ).empty();
+				         }
+				      }
+				    });
+			  });
+	        }
+	    });
+	}
+
+	function fcrowndogClick() {
+		//get a user who is logging in
+	    let currentUser = firebase.auth().currentUser;
+
+		//get a userid
+	    let userId = currentUser.uid 
+	    let dbRefUserInfo = firebase.database().ref("users/" + userId);
+	    dbRefUserInfo.on("value", function(snapshot) {
+	    	let userDetails = snapshot.val();
+	        let dogpicnum = userDetails.dogpicture;
+	        let pointnum = userDetails.playtimes;
+	        if((dogpicnum != 3) && (pointnum >= 30)){
+	        	$( function(e) {
+	        		$( "#dialog-confirm" ).html("Do you wanna set?");
+				    $( "#dialog-confirm" ).dialog({
+				      resizable: false,
+				      title: "Set flower crown Doggy!",
+				      height: "auto",
+				      width: 400,
+				      modal: true,
+				      buttons: {
+				        "Yes": function(event) {
+								dbRefUserInfo.update({
+			          				dogpicture: 3
+			        			});
+			        			domelems.dogplacementimage.src = "/img/dog-flower-crown-purple.png";		
+				          $( this ).dialog( "destroy" );
+				          $( event.target ).remove();
+				          $( "#dialog-confirm" ).empty();
+				        },
+				        "No": function(event) {
+				          $( this ).dialog( "destroy" );
+				          $( event.target ).remove();
+				          $( "#dialog-confirm" ).empty();
+				        }
+				      }
+				    });
+			  });
+	        }
+	    });
+	}
+
 
 	//get elements 
     function getDOMElements() {
@@ -81,6 +234,7 @@ console.log("point:" + point);
           "normaldoggy": document.getElementById("normaldog"),
           "hatdoggy": document.getElementById("hatdog"),
           "scarfdoggy": document.getElementById("scarfdog"),
-          "fcrowndoggy": document.getElementById("fcrowndog")
+          "fcrowndoggy": document.getElementById("fcrowndog"),
+          "dogplacementimage": document.getElementById("dogplacement")
         }
     }
