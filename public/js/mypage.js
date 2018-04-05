@@ -67,64 +67,6 @@ console.log("nouser");
 
     //when a user click a "Reset"
     elems.entryresetButton.addEventListener("click", resetEntry, false);
-       
-    
-//     function loadPastlog(){
-//         //get a user who is logging in
-//         let currentUser = firebase.auth().currentUser;
-// // 
-//         //get a userid
-//         let userId = currentUser.uid;  
-//         let dbRefinput = firebase.database().ref("userinput");
-//         let querydisp = dbRefinput.orderByChild("userid").equalTo(userId);
-// // console.log("querydisp: " + querydisp);
-//           querydisp.on("value", function(snapshot) {
-// // console.log(snapshot.numChildren());
-//               let i = 0;
-//               snapshot.forEach(function(d){
-                  
-//                   let nodediv = document.createElement("div");
-//                   let crefun = document.createAttribute("onclick"); 
-//                   crefun.value = "previewLog(this.id)";
-//                   let creid = document.createAttribute("id"); 
-//                   creid.value = "logid" + i;
-//                   nodediv.setAttributeNode(crefun);
-//                   nodediv.setAttributeNode(creid);
-
-//                   let nodeh4 = document.createElement("h4");
-//                   let textnodeh4= document.createTextNode(d.child("createdate").val());
-//                   nodeh4.appendChild(textnodeh4);
-                  
-//                   let nodep = document.createElement("p");
-//                   let textnodep = document.createTextNode(d.child("text").val());
-//                   nodep.appendChild(textnodep);
-                  
-//                   let nodeimg = document.createElement("img");
-//                   let cresrc = document.createAttribute("src"); 
-//                   let crealt = document.createAttribute("alt"); 
-//                   cresrc.value = d.child("imageplace").val();
-//                   crealt.value = d.child("imagename").val();
-//                   nodeimg.setAttributeNode(cresrc);
-//                   nodeimg.setAttributeNode(crealt);
-
-//                   let nodeeimg = document.createElement("img");
-//                   let creesrc = document.createAttribute("src"); 
-//                   let creealt = document.createAttribute("alt"); 
-//                   creesrc.value = emotionUrl[d.child("emotionid").val()];
-//                   creealt.value = emotionAlt[d.child("emotionid").val()];
-//                   nodeeimg.setAttributeNode(creesrc);
-//                   nodeeimg.setAttributeNode(creealt);
-
-//                   nodediv.appendChild(nodeh4);
-//                   nodediv.appendChild(nodep);
-//                   nodediv.appendChild(nodeimg);
-//                   nodediv.appendChild(nodeeimg);
-
-//                   elems.displaylogdis.appendChild(nodediv);
-//                   i = i + 1;
-//               });
-//           }); 
-//     }
 
     function loadPastlog(){
         //get a user who is logging in
@@ -295,19 +237,6 @@ console.log("nouser");
             elems.entryMood.alt = emotionAlt[emotionnum];
 
             //check whether there is src attribute in img id"entry_pic"
-    //         if (entrypicAttr) {
-    //               let pathReference = storage.ref(picname);
-    // console.log("pathReference: " + pathReference);
-    //               // Create a reference to the file we want to download
-    //               let picRef = storageRef.child(picname);
-
-    //               // Get the download URL
-    //               picRef.getDownloadURL().then(function(url) {
-    // console.log(url);
-    //                 elems.entrypicDis.src = url;
-    //                 elems.entrypicDis.alt = picname;
-    //               });
-    //         }
             if (entrypicAttr) {
                   let pathReference = storage.ref(picregistername);
                   // Create a reference to the file we want to download
@@ -325,29 +254,6 @@ console.log("nouser");
             window.alert("Please input your entry! And select the emotional icon!");
         }
     }
-
-
-//     function resetEntry(){
-// console.log("Reset works!");
-//       elems.qlentrytext.innerHTML = null;
-//       elems.entrypic.removeAttribute("src");
-//       picname = "";
-
-// console.log("one");
-// console.log("entrypicAttr: " + entrypicAttr);
-//       if(entrypicAttr){
-//           // Create a reference to the file to delete
-//           let delpicRef = storageRef.child(picname);
-// console.log("two");
-//           // Delete the file
-//           delpicRef.delete().then(function() {
-//             // File deleted successfully
-// console.log("Complete delete a pic");
-//           }).catch(function(error) {
-// console.log("A pic Delete Error...");
-//           });
-//       }
-//     }
 
         function resetEntry() {
             elems.qlentrytext.innerHTML = null;;
@@ -486,39 +392,6 @@ let playPrevious  = dbRefUserInfo.on("value", function(snapshot) {
     }
 
     //function to save file
-//       function loadFile(){
-//           let file = document.getElementById("files").files[0];
-// console.log(file);
-          
-//           let storageRef = firebase.storage().ref();
-          
-//           //dynamically set reference to the file name
-//           let thisRef = storageRef.child(file.name);
-// console.log("file.name: " + file.name);
-//           //put request upload file to firebase storage
-//           thisRef.put(file).then(function(snapshot) {
-// console.log('Uploaded a blob or file!');
-//           });
-
-//           let pathReference = storage.ref(file.name);
-// console.log("pathReference: " + pathReference);
-//           picname = file.name;
-
-//           // previewFile(picname);
-
-//           var latetra = 0;
-//           var setInter = setInterval(function() {
-// console.log(latetra);
-//               latetra++;
-//               //end condition
-//               if (latetra == 4) {
-//               clearInterval(setInter);
-//               previewFile(picname);
-// console.log("END");
-//               }
-//           }, 500);
-//       }
-
           function loadFile(){
               let currentUser = firebase.auth().currentUser;
               //get a userid
@@ -546,21 +419,6 @@ let playPrevious  = dbRefUserInfo.on("value", function(snapshot) {
                   }
               }, 500);
           }
-
-//       function previewFile(picname){
-//           // Create a reference to the file we want to download
-//           let picRef = storageRef.child(picname);
-
-//           // Get the download URL
-//           picRef.getDownloadURL().then(function(url) {
-// console.log(url);
-//           elems.entrypic.src = url;
-//             // Insert url into an <img> tag to "download"
-//           }).catch(function(error) {
-// console.log("error");
-//           });
-
-//       }
 
       function previewFile(picregistername){
           // Create a reference to the file we want to download
@@ -663,12 +521,12 @@ let playPrevious  = dbRefUserInfo.on("value", function(snapshot) {
     // Initialize Firebase
     function initializeApp(){
         var config = {
-          apiKey: "AIzaSyB54gHFoCICkOQZ-lcdc1m1jVi-EW3NNOc",
-          authDomain: "charmupapp.firebaseapp.com",
-          databaseURL: "https://charmupapp.firebaseio.com",
-          projectId: "charmupapp",
-          storageBucket: "charmupapp.appspot.com",
-          messagingSenderId: "263698113549"
+          apiKey: "AIzaSyAatGjG5U82vOAc2Gdj1n1HRYuATwoL8Ng",
+          authDomain: "cheerupcharmcordova.firebaseapp.com",
+          databaseURL: "https://cheerupcharmcordova.firebaseio.com",
+          projectId: "cheerupcharmcordova",
+          storageBucket: "cheerupcharmcordova.appspot.com",
+          messagingSenderId: "648210211385"
           };
         firebase.initializeApp(config);
     }

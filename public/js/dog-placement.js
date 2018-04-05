@@ -23,7 +23,7 @@
 
 	function showdogPic(dogpicnum) {
 		let dogpictureid = dogpicnum;
-console.log("showdogPic:" + dogpictureid);
+// console.log("showdogPic:" + dogpictureid);
 
 		switch (dogpictureid) {
 			case 0:
