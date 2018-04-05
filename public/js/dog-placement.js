@@ -14,7 +14,7 @@
 	    let userId = currentUser.uid 
 	    let dbRefUserInfo = firebase.database().ref("users/" + userId);
 
-		dbRefUserInfo.on("value", function(snapshot) {
+		dbRefUserInfo.once("value", function(snapshot) {
         let userDetails = snapshot.val();
         let dogpicnum = userDetails.dogpicture;
 		showdogPic(dogpicnum);
@@ -23,7 +23,6 @@
 
 	function showdogPic(dogpicnum) {
 		let dogpictureid = dogpicnum;
-// console.log("showdogPic:" + dogpictureid);
 
 		switch (dogpictureid) {
 			case 0:
