@@ -41,7 +41,7 @@
                 let userId = currentUser.uid   
                 let urldb = "users/" + userId;
                 const dbRef = firebase.database().ref(urldb);
-                dbRef.on("value", function(snapshot) {
+                dbRef.once("value", function(snapshot) {
                 usernamedis = snapshot.child("name").val();
                 //display username in their page
                 elems.usernameField.innerHTML  = " " + usernamedis;
@@ -77,7 +77,7 @@ console.log("nouser");
         let dbRefinput = firebase.database().ref("userinput");
         let querydisp = dbRefinput.orderByChild("userid").equalTo(userId);
 
-          querydisp.on("value", function(snapshot) {
+          querydisp.once("value", function(snapshot) {
               let i = 0;
               snapshot.forEach(function(d){
 
@@ -296,19 +296,17 @@ console.log("nouser");
 
         //get a userid
         let userId = currentUser.uid   
-console.log(userId);
 
-// increase the number of the user's playtime
-let dbRefUserInfo = firebase.database().ref("users/" + userId + "/playtimes");
-dbRefUserInfo.transaction(function(currentPlaytimes){
-  return currentPlaytimes + 1;
-});
+        // increase the number of the user's playtime
+        let dbRefUserInfo = firebase.database().ref("users/" + userId + "/playtimes");
+        dbRefUserInfo.transaction(function(currentPlaytimes){
+          return currentPlaytimes + 1;
+        });
     
-// get a user's playtime
-console.log("currentUser:" + userId);
-let playPrevious  = dbRefUserInfo.on("value", function(snapshot) {
-                    console.log(snapshot.val());
-                  });
+        // get a user's playtime
+        let playPrevious  = dbRefUserInfo.once("value", function(snapshot) {
+                            console.log(snapshot.val());
+                          });
 
         let logdata = firebase.database().ref('userinput/')
         let imgUrl = elems.entrypicDis.getAttribute("src");
