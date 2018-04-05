@@ -63,7 +63,7 @@ main{
 	justify-content: baseline;
 	flex-direction: column;
 	// width:80%;
-	h2{
+	h2#greeting, h2.view-title{
 		text-align: center;
 		font-family: 'Short Stack', cursive;
 		font-size: 2rem;
@@ -308,7 +308,7 @@ label{
 	}
 }
 
-div#displaylogdis{
+#displaylogdis{
 	margin-top: 12em;
 	margin-bottom: 5em;
 	// padding-left: 2em;
@@ -322,6 +322,13 @@ div#displaylogdis{
 	@extend .z-depth-5;
 	div:nth-of-type(2n+1){
 		background-color: #fbdcac;
+	}
+	section{
+		font-family: 'Short Stack', cursive;
+		font-size: 0.9rem;
+		h1, h2{
+			font-family: "Nexa Bold", sans-serif;
+		}
 	}
 	div{
 		padding: 0 2em 1em;
@@ -377,11 +384,19 @@ div#displaylogdis{
 		color: #cf0200;
 	}
 }
+
+#entrylogdis{
+	img{
+		display:block;
+		margin-bottom: 1em;
+	}
+}
 #entrylogdis_text{
 	background-color: rgba(255,255,255, 0.6);
 	padding: 10px;
 	h1{
 		margin-top: 0;
+		font-size: 3.5rem;
 	}
 }
 
@@ -409,6 +424,11 @@ div#displaylogdis{
 	@extend .entry-title;
 	@extend .login-box;
 	min-height:auto;
+	overflow-y:scroll;
+	width:505px;	
+	&:before{
+		border: none;
+	}
 	img{
 		max-width: 300px;
 	}
@@ -416,13 +436,15 @@ div#displaylogdis{
 		position: relative;
 	}
 	section{
+		font-family: 'Short Stack', cursive;
+		font-size: 0.9rem;
+		h1, h2{
+			font-family: "Nexa Bold", sans-serif;
+		}
 		h2{
 			background-color: transparent;
 			text-align: left;
 			padding: 0;
-		}
-		p{
-			font-family: 'Short Stack', cursive;
 		}
 	}
 	img{
@@ -589,12 +611,56 @@ div#displaylogdis{
             			font-weight: 800;
             		}
             	}
+
+            	li:before img.dog-selected{
+            		content: "Hello";
+            	}
             	img{
-            		// width:  ;
+            		position: relative;
+            		&.dog-selected{
+            			& > p{
+            				background-color: red;
+            			}
+            			&:before{
+            				background-image: url("../img/ok.png");
+            				content: "Hello";
+							// position: absolute;
+							top:0;
+							width:100px;
+							height: 100px;
+            			}
+            		}
+        			&:before{
+        				background-image: url("../img/ok.png");
+        				content: " ";
+						// position: absolute;
+						top:0;
+        			}
             	}
             }
         }
     }
+}
+
+img{
+	&.dog-selected{
+	position: relative;
+		& ~ p{
+			position: relative;
+			&:before{
+				background-image: url("../img/ok.png");
+				background-size: cover;
+				content: "";
+				position: absolute;
+				transform: translate(-50%, 0%);
+				left:54%;
+				top:-135px;
+				width:105px;
+				height: 105px;
+			}
+		}
+		
+	}
 }
 
 #close-button-all{
@@ -617,6 +683,25 @@ div#displaylogdis{
 	@extend #close-button-all;
     top: -25px;
     right: -15px;
+}
+
+.ql-snow .ql-editor{
+	font-family: 'Short Stack', cursive;
+	position: absolute;
+	width:100%;
+	height:100%;
+	top:0;
+	h1{
+		font-family: "Nexa Bold", sans-serif;
+		line-height: 110%; 
+		margin: 0 0 ($h1-fontsize / 2.5) 0;
+		font-size: 	3rem;
+	}
+	h2{
+		font-family: "Nexa Bold", sans-serif;
+		line-height: 110%; 
+		margin: 0 0 ($h1-fontsize / 2.5) 0;
+	}
 }
 
 
