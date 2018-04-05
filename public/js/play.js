@@ -1,10 +1,5 @@
 	let domelems = getDOMElements();
 
-	domelems.normaldoggy.addEventListener("click", normaldogClick, false);
-	domelems.hatdoggy.addEventListener("click", hatdogClick, false);
-	domelems.scarfdoggy.addEventListener("click", scarfdogClick, false);
-	domelems.fcrowndoggy.addEventListener("click", fcrowndogClick, false);
-
 	function playShow(){
 		firebase.auth().onAuthStateChanged(function(user_) {
 	    if (user_) {
@@ -23,7 +18,7 @@
 	    let userId = currentUser.uid 
 	    let dbRefUserInfo = firebase.database().ref("users/" + userId);
 
-	    dbRefUserInfo.on("value", function(snapshot) {
+	    dbRefUserInfo.once("value", function(snapshot) {
         let userDetails = snapshot.val();
         let dogpicnum = userDetails.dogpicture;
         let pointnum = userDetails.playtimes;
@@ -38,8 +33,6 @@
 	function showPlayPic(dogpicnum, pointnum) {
 			let dogpictureid = dogpicnum;
 			let point = pointnum;
-// console.log("dogpictureid:" + dogpictureid);
-// console.log("point:" + point);
 			if(( 10 <= point) && (point < 20)) {
 				domelems.hatdoggy.src = "img/shop-2.png";
 			} else if ((20 <= point) && (point < 30)) {
@@ -52,16 +45,14 @@
 			}
 	}
 
-	function normaldogClick(evt) {
-		evt.stopImmediatePropagation();
-	        	evt.preventDefault();
+	function normaldogClick() {
 		//get a user who is logging in
 	    let currentUser = firebase.auth().currentUser;
 
 		//get a userid
 	    let userId = currentUser.uid 
 	    let dbRefUserInfo = firebase.database().ref("users/" + userId);
-	    dbRefUserInfo.on("value", function(snapshot) {
+	    dbRefUserInfo.once("value", function(snapshot) {
 	    	let userDetails = snapshot.val();
 	        let dogpicnum = userDetails.dogpicture;
 	        if(dogpicnum != 0){
@@ -79,15 +70,10 @@
 			          				dogpicture: 0
 			        			});
 			        			domelems.dogplacementimage.src = "/img/dog-01.png";			
-				          $( this ).dialog( "destroy" );
-				          $( event.target ).remove();
-				          $( "#dialog-confirm" ).empty();
-				          
+				          $( this ).dialog( "close" );			          
 				        },
 				        "No": function(event) {
-				          $( this ).dialog( "destroy" );
-				          $( event.target ).remove();
-				          $( "#dialog-confirm" ).empty();
+				          $( this ).dialog( "close" );
 				        }
 				      }
 				    });
@@ -105,7 +91,7 @@
 		//get a userid
 	    let userId = currentUser.uid 
 	    let dbRefUserInfo = firebase.database().ref("users/" + userId);
-	    dbRefUserInfo.on("value", function(snapshot) {
+	    dbRefUserInfo.once("value", function(snapshot) {
 	    	let userDetails = snapshot.val();
 	        let dogpicnum = userDetails.dogpicture;
 	        let pointnum = userDetails.playtimes;
@@ -148,7 +134,7 @@
 		//get a userid
 	    let userId = currentUser.uid 
 	    let dbRefUserInfo = firebase.database().ref("users/" + userId);
-	    dbRefUserInfo.on("value", function(snapshot) {
+	    dbRefUserInfo.once("value", function(snapshot) {
 	    	let userDetails = snapshot.val();
 	        let dogpicnum = userDetails.dogpicture;
 	        let pointnum = userDetails.playtimes;
@@ -190,7 +176,7 @@
 		//get a userid
 	    let userId = currentUser.uid 
 	    let dbRefUserInfo = firebase.database().ref("users/" + userId);
-	    dbRefUserInfo.on("value", function(snapshot) {
+	    dbRefUserInfo.once("value", function(snapshot) {
 	    	let userDetails = snapshot.val();
 	        let dogpicnum = userDetails.dogpicture;
 	        let pointnum = userDetails.playtimes;
@@ -224,6 +210,11 @@
 	        }
 	    });
 	}
+
+	domelems.normaldoggy.addEventListener("click", normaldogClick, false);
+	domelems.hatdoggy.addEventListener("click", hatdogClick, false);
+	domelems.scarfdoggy.addEventListener("click", scarfdogClick, false);
+	domelems.fcrowndoggy.addEventListener("click", fcrowndogClick, false);
 
 
 	//get elements 
