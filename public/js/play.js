@@ -81,13 +81,13 @@
 			        			domelems.dogplacementimage.src = "/img/dog-01.png";			
 				          $( this ).dialog( "destroy" );
 				          $( event.target ).remove();
-				          // $( "#dialog-confirm" ).empty();
+				          $( "#dialog-confirm" ).empty();
 				          
 				        },
 				        "No": function(event) {
 				          $( this ).dialog( "destroy" );
 				          $( event.target ).remove();
-				          // $( "#dialog-confirm" ).empty();
+				          $( "#dialog-confirm" ).empty();
 				        }
 				      }
 				    });
@@ -98,7 +98,7 @@
 
 	function hatdogClick(evt) {
 		evt.stopImmediatePropagation();
-	     evt.preventDefault();
+	    evt.preventDefault();
 		//get a user who is logging in
 	    let currentUser = firebase.auth().currentUser;
 
