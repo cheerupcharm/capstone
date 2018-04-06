@@ -39,8 +39,7 @@ gulp.task('sass', function () {
             onError: browserSync.notify('Error in sass')
         }))
         .on('error', sass.logError)
-        .pipe(sourcemaps.write({includeContent: false}))
-        .pipe(sourcemaps.init({loadMaps: true}))
+        .pipe(sourcemaps.write())
         .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
         .pipe(gulp.dest('css'))
         .pipe(browserSync.reload({stream:true}));
