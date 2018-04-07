@@ -43,6 +43,22 @@
 				domelems.scarfdoggy.src = "img/shop-3.png";
 				domelems.fcrowndoggy.src = "img/shop-4.png";
 			}
+
+			showSticker(dogpicnum)
+	}
+
+	function showSticker(dogpicnum) {
+		let dogpictureid = dogpicnum;
+
+		if(dogpicnum == 0) {
+			$("#normaldog").addClass("dog-selected");
+		} else if (dogpicnum == 1) {
+			$("#hatdog").addClass("dog-selected");
+		} else if (dogpicnum == 2) {
+			$("#scarfdog").addClass("dog-selected");
+		} else if (dogpicnum == 3) {
+			$("#fcrowndog").addClass("dog-selected");
+		}
 	}
 
 	function normaldogClick() {
@@ -66,9 +82,19 @@
 				      modal: true,
 				      buttons: {
 				        "Yes": function(event) {
+				        		if(dogpicnum == 1) {
+				        			$("#hatdog").removeClass("dog-selected");
+				        		}else if (dogpicnum == 2) {
+				        			$("#scarfdog").removeClass("dog-selected");
+				        		} else if (dogpicnum == 3) {
+				        			$("#fcrowndog").removeClass("dog-selected");
+				        		}
 								dbRefUserInfo.update({
 			          				dogpicture: 0
 			        			});
+
+			        			$("#normaldog").addClass("dog-selected");
+
 			        			domelems.dogplacementimage.src = "/img/dog-01.png";			
 				          $( this ).dialog( "close" );			          
 				        },
@@ -106,9 +132,20 @@
 				      modal: true,
 				      buttons: {
 				        "Yes": function(event) {
+				        		if(dogpicnum == 0) {
+				        			$("#normaldog").removeClass("dog-selected");
+				        		}else if (dogpicnum == 2) {
+				        			$("#scarfdog").removeClass("dog-selected");
+				        		} else if (dogpicnum == 3) {
+				        			$("#fcrowndog").removeClass("dog-selected");
+				        		}
+
 								dbRefUserInfo.update({
 			          				dogpicture: 1
 			        			});
+
+			        			$("#hatdog").addClass("dog-selected");
+
 			        			domelems.dogplacementimage.src = "/img/dog-hat.png";		
 				          $( this ).dialog( "destroy" );
 				          $( event.target ).remove();
@@ -149,9 +186,20 @@
 				      modal: true,
 				      buttons: {
 				        "Yes": function(event) {
+				        		if(dogpicnum == 0) {
+				        			$("#normaldog").removeClass("dog-selected");
+				        		}else if (dogpicnum == 1) {
+				        			$("#hatdog").removeClass("dog-selected");
+				        		} else if (dogpicnum == 3) {
+				        			$("#fcrowndog").removeClass("dog-selected");
+				        		}
+
 								dbRefUserInfo.update({
 			          				dogpicture: 2
 			        			});
+
+								$("#scarfdog").addClass("dog-selected");
+
 			        			domelems.dogplacementimage.src = "/img/dog-scarf.png";		
 				          $( this ).dialog("destroy");
 				          $( event.target ).remove();
@@ -191,9 +239,20 @@
 				      modal: true,
 				      buttons: {
 				        "Yes": function(event) {
+				        		if(dogpicnum == 0) {
+				        			$("#normaldog").removeClass("dog-selected");
+				        		}else if (dogpicnum == 1) {
+				        			$("#hatdog").removeClass("dog-selected");
+				        		} else if (dogpicnum == 2) {
+				        			$("#scarfdog").removeClass("dog-selected");
+				        		}
+
 								dbRefUserInfo.update({
 			          				dogpicture: 3
 			        			});
+
+								$("#fcrowndog").addClass("dog-selected");
+
 			        			domelems.dogplacementimage.src = "/img/dog-flower-crown-purple.png";		
 				          $( this ).dialog( "destroy" );
 				          $( event.target ).remove();
