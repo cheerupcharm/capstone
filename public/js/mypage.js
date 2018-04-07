@@ -220,14 +220,14 @@ console.log("nouser");
     }
 
     function nextEntry(){
-        text  = elems.qlentrytext.innerHTML;
+        text  = elems.qlentrytext.innerText;
 
         console.log(text);
         // text  = elems.entrytext.value;
 
         console.log(emotionbool);
 
-        if ((!text == "") && (emotionbool == "true")) {
+        if ((!text == "\s\r") && (emotionbool == "true")) {
             elems.entrydate.innerHTML = EntMonEng[EntMon] + " " + EntDay;
             elems.entrytextDis.innerHTML = text;
             elems.entrylogDisFeild.style.display = "inline";
@@ -354,6 +354,10 @@ console.log("nouser");
       elems.entrypicDis.removeAttribute("alt");
       picname = "";
       picregistername = "";
+
+      // delete the input type file
+      var inputname = document.getElementById('files');
+      inputname.value = "";
 
        //undisplay div id "entrylogdis"
       elems.entrylogDisFeild.style.display = "none";
@@ -519,13 +523,13 @@ console.log("nouser");
     // Initialize Firebase
     function initializeApp(){
         var config = {
-          apiKey: "AIzaSyB54gHFoCICkOQZ-lcdc1m1jVi-EW3NNOc",
-          authDomain: "charmupapp.firebaseapp.com",
-          databaseURL: "https://charmupapp.firebaseio.com",
-          projectId: "charmupapp",
-          storageBucket: "charmupapp.appspot.com",
-          messagingSenderId: "263698113549"
-          };
+          apiKey: "AIzaSyClwKM2XAzxWczot4RnFcqlA4G4klfVLLQ",
+          authDomain: "cheerupcharm-18dbe.firebaseapp.com",
+          databaseURL: "https://cheerupcharm-18dbe.firebaseio.com",
+          projectId: "cheerupcharm-18dbe",
+          storageBucket: "cheerupcharm-18dbe.appspot.com",
+          messagingSenderId: "868086547783"
+        };
         firebase.initializeApp(config);
     }
 
