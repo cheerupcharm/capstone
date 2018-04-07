@@ -43,6 +43,7 @@ function uploadstuff(){
             elems.dislogBig.removeChild(elems.dislogBig.firstChild);
         };
   elems.entrylogField.style.display = "inline";
+  elems.qlentrytext.innerHTML = "";
   // elems.displaylogdis.style.display = "inline";
       };
 

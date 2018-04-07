@@ -92,7 +92,7 @@
                                 <img id="entrylogdis_pic">
                                 <img id="entrymood" src="" alt="">
                                 <button class="bbtn" type="button" id="entrylogdis_backb">Back</button>
-                                <button class="bbtn" type="button" id="entrylogdis-submitb">Submit</button>
+                                <button class="bbtn" type="submit" id="entrylogdis-submitb">Submit</button>
                             </div>
                         </div>
                     </div>
@@ -163,6 +163,7 @@
     <!-- Initialize Quill editor -->
     <script>
     var quill = new Quill('#qtext', {
+        placeholder: 'Write down your story...',
         theme: 'snow'
     });
     </script>
