@@ -7,7 +7,7 @@ main#greeeting p{
 }
 
 div#displaylogdis{
-	float: right;
+	/* float: right; */
 }
 
 div#entrylog img, div#entrylog img{
