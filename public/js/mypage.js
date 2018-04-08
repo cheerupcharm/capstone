@@ -77,7 +77,7 @@ console.log("nouser");
         let dbRefinput = firebase.database().ref("userinput");
         let querydisp = dbRefinput.orderByChild("userid").equalTo(userId);
 
-          querydisp.once("value", function(snapshot) {
+          querydisp.on("value", function(snapshot) {
               let i = 0;
               snapshot.forEach(function(d){
 
@@ -220,14 +220,14 @@ console.log("nouser");
     }
 
     function nextEntry(){
-        text  = elems.qlentrytext.innerText;
+        text  = elems.qlentrytext.innerText.trim();
 
         console.log(text);
         // text  = elems.entrytext.value;
 
         console.log(emotionbool);
 
-        if ((!text == "\s\r") && (emotionbool == "true")) {
+        if ((!text == "") && (emotionbool == "true")) {
             elems.entrydate.innerHTML = EntMonEng[EntMon] + " " + EntDay;
             elems.entrytextDis.innerHTML = text;
             elems.entrylogDisFeild.style.display = "inline";
@@ -288,7 +288,6 @@ console.log("nouser");
 
 
         while(elems.displaylogdis.firstChild) {
-// console.log("elems.displaylogdis.firstChild: " + elems.displaylogdis.firstChild);
             elems.displaylogdis.removeChild(elems.displaylogdis.firstChild);
         }
          //get a user who is logging in
