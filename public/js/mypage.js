@@ -189,6 +189,7 @@ console.log("nouser");
         nodebutton.appendChild(textnodebutton);
 
 
+        $(".botui-app-container").addClass("hidden");
         $(".displaylog-container").toggleClass("slide-in");
         $("#entrybox-wrapper").addClass("hidden");
         $("#intro-wrapper").addClass("hidden");
