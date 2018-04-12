@@ -388,6 +388,9 @@ label{
 }
 
 #entrylogdis{
+	p{
+		font-family: 'Short Stack', cursive;
+	}
 	img{
 		display:block;
 		margin-bottom: 1em;
@@ -435,6 +438,7 @@ label{
 		max-width: 300px;
 	}
 	button{
+		@extend button.bbtn;
 		position: relative;
 	}
 	section{

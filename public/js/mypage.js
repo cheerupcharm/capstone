@@ -221,14 +221,15 @@ console.log("nouser");
     }
 
     function nextEntry(){
-        text  = elems.qlentrytext.innerText.trim();
+        text  = elems.qlentrytext.innerHTML;
+        rawtext  = elems.qlentrytext.innerText.trim();
 
         console.log(text);
         // text  = elems.entrytext.value;
 
         console.log(emotionbool);
 
-        if ((!text == "") && (emotionbool == "true")) {
+        if ((!rawtext == "") && (emotionbool == "true")) {
             elems.entrydate.innerHTML = EntMonEng[EntMon] + " " + EntDay;
             elems.entrytextDis.innerHTML = text;
             elems.entrylogDisFeild.style.display = "inline";
